@@ -1,30 +1,31 @@
-document.getElementById('filter-button').addEventListener('click', () => {
-    document.getElementById('filter-options').style.display = document.getElementById('filter-options').style.display === 'none' ? 'flex' : 'none';
-})
+const priceFilter = document.getElementById('price-filter');
+const availabilityFilter = document.getElementById('availability-filter');
+const boatCards = document.querySelectorAll('.boat-card');
 
-document.querySelectorAll('#gallery button').forEach((button) => {
-    button.addEventListener('click', () => {
-        document.getElementById('lightbox-modal').style.display = 'flex';
-        document.getElementById('lightbox-image').src = button.parentNode.querySelector ('img').src;
-    })
-})
+function filterBoats() {
+    const priceValue = priceFilter.value;
+    const availabilityValue = availabilityFilter.value;
 
+    boatCards.forEach(card => {
+        const price = parseInt(card.getAttribute('data-price'));
+        const availability = card.getAttribute('data-availability');
 
-document.getElementById('close-lightbox-button').addEventListener('click' , () => {
-  document.getElementById('lightbox-modal').style.display = 'none'
-})
+        let priceMatch = false;
+        if (priceValue === 'all') priceMatch = true;
+        else if (priceValue === 'low' && price < 500) priceMatch = true;
+        else if (priceValue === 'medium' && price >= 500 && price <= 1000) priceMatch = true;
+        else if (priceValue === 'high' && price > 1000) priceMatch = true;
 
-document.getElementById('interior-filter').addEventListener('click', ()=> {
-    document.querySelectorAll('#gallery div').forEach((div) => {
-        if (div.querySelector('img').src.includes('interior')) {
-            div.style.display = 'flex';
-            
-        }else{
-            div.style.display = 'none'
+        let availabilityMatch = availabilityValue === 'all' || availabilityValue === availability;
+
+        if (priceMatch && availabilityMatch) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
         }
-    })
-})
+    });
 
-document.getElementById('exterior-filter').addEventListener('click', () => {
-    document,querySelectorAll()
-})
+    priceFilter.addEventListener('change', filterBoats);
+availabilityFilter.addEventListener('change', filterBoats);
+}
+

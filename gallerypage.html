@@ -3,79 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gallery</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="tailwind.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
 </head>
- <nav class="bg-black py-4 fixed w-full z-10">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
-            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
-                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
-            </button>
-        </div>
-    </nav>
-
-    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
-        <button id="close-menu" class="absolute top-4 right-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
-        
-           
-        </ul>
-
-      
-    </div>
-
 <body>
     <nav class="bg-black py-4 fixed w-full z-10">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
+            <a href="#" class="text-lg font-bold text-white">
+                <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50">
+            </a>
             <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
                 <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
             </button>
         </div>
     </nav>
 
-    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
-        <button id="close-menu" class="absolute top-4 right-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
-        
-            <li class="p-2"><a href="#">Home</a></li>
-            <li class="p-2"><a href="#">About</a></li>
-            <li class="p-2"><a href="#">Contact</a></li>
-        </ul>
-
-      
-    </div>
-<section class="py-20">
+    <section class="py-20 mt-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-4">Gallery</h2>
-            <div class=" flex justify-between items-center mb-6">
 
+            <!-- Filters -->
+            <div class="flex justify-between items-center mb-6">
                 <div>
-                    <label for="price-filter" class="block textsm font-medium font-clash-display text-black">Filter by price</label>
+                    <label for="price-filter" class="block text-sm font-medium text-gray-700">Filter by Price:</label>
+                    <select id="price-filter" class="block  p-2 border border-black-800 rounded">
+                        <option value="all">All</option>
+                        <option value="low">Below $500</option>
+                        <option value="medium">$500 - $1000</option>
+                        <option value="high">Above $1000</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="availability-filter" class="block text-sm font-medium text-gray-700">Filter by Availability:</label>
+                    <select id="availability-filter" class="block p-2 border border-gray-300 rounded">
+                        <option value="all">All</option>
+                        <option value="available">Available</option>
+                        <option value="unavailable">Unavailable</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Boat Cards -->
+            <div id="boat-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Example Boat Card -->
+                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="800" data-availability="available">
+                    <img src="image/boat1.jpg" alt="Boat 1" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-lg font-bold">Luxury Yacht</h3>
+                    <p class="text-gray-600">A luxurious yacht for your perfect vacation.</p>
+                    <p class="text-blue-500 font-bold">$800 per day</p>
+                    <p class="text-green-500 font-medium">Available</p>
                 </div>
 
+                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="400" data-availability="unavailable">
+                    <img src="image/boat2.jpg" alt="Boat 2" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-lg font-bold">Fishing Boat</h3>
+                    <p class="text-gray-600">Perfect for fishing trips with friends.</p>
+                    <p class="text-blue-500 font-bold">$400 per day</p>
+                    <p class="text-red-500 font-medium">Unavailable</p>
+                </div>
+
+                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="1200" data-availability="available">
+                    <img src="image/boat3.jpg" alt="Boat 3" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-lg font-bold">Speed Boat</h3>
+                    <p class="text-gray-600">Experience the thrill of speed on water.</p>
+                    <p class="text-blue-500 font-bold">$1200 per day</p>
+                    <p class="text-green-500 font-medium">Available</p>
+                </div>
             </div>
         </div>
-</section>
+    </section>
+
+    <script>
+        // Filter functionality
+        const priceFilter = document.getElementById('price-filter');
+        const availabilityFilter = document.getElementById('availability-filter');
+        const boatCards = document.querySelectorAll('.boat-card');
+
+        function filterBoats() {
+            const priceValue = priceFilter.value;
+            const availabilityValue = availabilityFilter.value;
+
+            boatCards.forEach(card => {
+                const price = parseInt(card.getAttribute('data-price'));
+                const availability = card.getAttribute('data-availability');
+
+                let priceMatch = false;
+                if (priceValue === 'all') priceMatch = true;
+                else if (priceValue === 'low' && price < 500) priceMatch = true;
+                else if (priceValue === 'medium' && price >= 500 && price <= 1000) priceMatch = true;
+                else if (priceValue === 'high' && price > 1000) priceMatch = true;
+
+                let availabilityMatch = availabilityValue === 'all' || availabilityValue === availability;
+
+                if (priceMatch && availabilityMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        priceFilter.addEventListener('change', filterBoats);
+        availabilityFilter.addEventListener('change', filterBoats);
+    </script>
 </body>
 </html>
