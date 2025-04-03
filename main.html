@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="tailwind.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+</head>
+<body> 
+    <nav class="bg-black py-4 fixed w-full z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
+            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
+                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
+            </button>
+        </div>
+    </nav>
+
+    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
+        <button id="close-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
+        
+           
+        </ul>
+
+      
+    </div>
+   <div>
+    <img src="image/pexels-chi-thanh-1595611963-31104298.jpg" alt="" pb-46 class="object-cover w-full h-screen xs:h-96 ">
+    <div class="absolute w-full top-20 bottom-25 mt-40 sm:top-10 md:top-15 lg:top-20 xl:top-25">
+        <form class="w-full p-6 rounded-lg shadow-lg bg-transparent" style="background-color: rgba(255, 255, 255, 0.1); box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); backdrop-filter: blur(10px);">
+            <label for="island-dropdown" class="block mb-2 text-sm font-medium text-gray-700 sm:text-base md:text-lg lg:text-xl xl:text-2xl">Choose an island:</label>
+            <select id="island-dropdown" name="island" class="block pl-3 w-full p-2.5 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
+                <option value="island1">Island 1</option>
+                <option value="island2">Island 2</option>
+                <option value="island3">Island 3</option>
+            </select>
+            <select id="island-dropdown" name="island" class="block w-full p-2.5 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
+                <option value="island1">Island 1</option>
+                <option value="island2">Island 2</option>
+                <option value="island3">Island 3</option>
+            </select>
+            <select id="island-dropdown" name="island" class="block w-full p-2.5 px-3 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
+                <option value="island1">Island 1</option>
+                <option value="island2">Island 2</option>
+                <option value="island3">Island 3</option>
+            </select>
+            <div class="align-center rounded-lg p-4 flex justify-center sm:p-6 md:p-8 lg:p-10 xl:p-12">
+            <button class="bg-black px-4 rounded-lg align-center text-center flex  py-2 text-white sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                Search
+            </button>
+        </div>
+        </form>
+    </div>
+<h2 class="text-black text-center text-2xl font-bold  mt-5 font-clash-display">Top Deals</h2>
+<p class="text-center font-medium py-3 p-1 font-sora">Discover amazing discounts and unbeatable prices on boats and all sizes and types with our top rated boast deals!</p>
+<div class="bg-black p-2 mt-10">
+    <img src="image/boat_owner_icon.svg" alt="" style="filter: invert(20)" class=" pt-7 brightness-2 invert-0 mx-auto">
+    <div class="grid grid-cols-1 gap-4 mt-7 p-3">
+    <p class="font-sora text-center text-white">Ready to turn your boat into a profitable business? Boat.mu makes it effortless with our free and easy-to-fill form to list your boat for charter worldwide. Any type of boat is welcome!</p>
+    <p class="font-sora text-center text-white">Set your own prices and choose who you want to charter your boat to, all while having complete control over your boat's availability. At Boat.mu, we're dedicated to making your business more profitable. Start your journey today!</p>
+    <div class="flex justify-center">
+    <button class="bg-white p-2 w-40  rounded-lg font-sora text-black  font-semibold items-center align-center justify-center">Advertise a boat </button>
+</div>
+    <img src="image/boat_renter_icon.svg" alt="" style="filter: invert(20)" class=" pt-7 brightness-2 invert-0 mx-auto">
+    <div class="grid grid-cols-1 gap-4 mt-7 p-3">
+    <p class="font-sora text-center text-white">Looking for the perfect boat for your dream trip? Our search engine makes it easy to find any type of boat in your desired area</p>
+    <p class="font-sora text-center text-white">Trust us to be your go-to third-party boat booking platform, and book directly and securely online with just a few clicks. At Boat.mu, we're dedicated to making sure you have the best trip possible. Start your search today!</p>
+    <div class="flex justify-center">
+    <button class="bg-white p-2 w-40  rounded-lg font-sora text-black  font-semibold items-center align-center justify-center"> <a href="gallerypage.html">Search for a boat</a></button>
+</div>
+</div>
+</div>
+   </div>
+   <article class="px-3 mt-12 ">
+    <div class="font-clash-display font-bold text-2xl text-black text-center mt-8">Top Categories</div>
+    <p class="text-center font-medium py-3 p-1 font-sora">We offer a diverse range of categories and activities to browse from, ensuring you can easily find the perfect vessel for your needs.</p>
+    <div class="relative top-28 px-10 text-white font-clash-display z-10 overflow-hidden">
+    <p class=" font-medium text-xl">Water skiing</p>
+    <p class="">Water skiing</p>
+</div>
+    <div class="relative">
+      <img src="image/pexels-photo-9965352.jpeg" alt="Ready" class="rounded-lg object-cover mt-4 object-center  h-70  w-full  xs:h-96">
+      <div class="absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg"></div>
+    </div>
+    <div class="">
+
+    </div>
+    <div class="relative top-28 px-10 text-white font-clash-display z-10">
+    <p class=" font-medium text-xl">Water skiing</p>
+    <p class="">Water skiing</p>
+</div>
+    <div class="relative">
+      <img src="image/pexels-photo-11828360.jpeg" alt="Ready" class="rounded-lg object-cover  object-center  h-70  w-full  xs:h-96">
+      <div class="absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg"></div>
+    </div>
+    <div class="">
+
+    </div>
+    <div class="relative top-28 px-10 text-white font-clash-display z-10">
+    <p class=" font-medium text-xl">Water skiing</p>
+    <p class="">Water skiing</p>
+</div>
+    <div class="relative">
+      <img src="image/pexels-photo-2150304.jpeg" alt="Ready" class="rounded-lg object-cover  object-center  h-76 w-full  xs:h-96">
+      <div class="absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg"></div>
+    </div>
+    <div class="">
+
+    </div>
+  </article>
+   <script type="module" src="main.js"></script>
+
+</body>
+
+<footer class="bg-black mt-24 py-10">
+ <div class="text-center ">
+    <div class="text-white text-xl font-semibold font-clash-display ">Customer</div>
+    <ol class="font-sora text-white font-lg font-sora mt-3"> <a href="contact.html"> Contact</a></ol>
+    <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> FAQ</a></ol>
+   
+ </div> 
+ <div class="text-center mt-10">
+    <div class="text-white text-xl font-semibold font-clash-display ">Customer</div>
+    <ol class="font-sora text-white font-lg font-sora mt-3"> <a href=""> Contact</a></ol>
+    <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> FAQ</a></ol>
+   
+ </div> 
+ <div class="text-center mt-10">
+    <div class="text-white text-xl font-semibold font-clash-display ">Customer</div>
+    <ol class="font-sora text-white font-lg font-sora mt-3"> <a href=""> Contact</a></ol>
+    <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> FAQ</a></ol>
+   
+ </div> 
+</footer>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="tailwind.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Gallery Section -->
+<section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Gallery</h2>
+      <div class="flex justify-center mb-4">
+        <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" id="filter-button">Filter</button>
+        <div class="flex justify-center" id="filter-options" style="display: none;">
+          <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="interior-filter">Interior</button>
+          <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="exterior-filter">Exterior</button>
+          <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="features-filter">Features</button>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="gallery">
+        <!-- Image 1 -->
+        <div class="relative">
+          <img src="image/boatmu_logo_4.png" alt="Image 1" class="w-full h-full object-cover">
+          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-1">View</button>
+        </div>
+        <!-- Image 2 -->
+        <div class="relative">
+          <img src="image2.jpg" alt="Image 2" class="w-full h-full object-cover">
+          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-2">View</button>
+        </div>
+        <!-- Image 3 -->
+        <div class="relative">
+          <img src="image3.jpg" alt="Image 3" class="w-full h-full object-cover">
+          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-3">View</button>
+        </div>
+        <!-- Image 4 -->
+        <div class="relative">
+          <img src="image4.jpg" alt="Image 4" class="w-full h-full object-cover">
+          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-4">View</button>
+        </div>
+        <!-- Image 5 -->
+        <div class="relative">
+          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-5">
+          <img src="image5.jpg" alt="Image 5" class="w-full h-full object-cover">
+          </button>
+        </div>
+        <!-- Image 6 -->
+        <div class="relative">
+          <img src="image6.jpg" alt="Image 6" class="w-full h-full object-cover">
+          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-6">View</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Lightbox Modal -->
+  <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 flex justify-center items-center" id="lightbox-modal" style="display: none;">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-4">
+      <img src="" alt="" id="lightbox-image" class="w-full h-full object-cover">
+      <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="close-lightbox-button">Close</button>
+    </div>
+  </div>
+
+  <script src="gallery.js"></script>
+</body>
+</html>

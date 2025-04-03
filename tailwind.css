@@ -1,0 +1,38 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Custom styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+    }
+    .font-clash-display {
+      font-family: 'Clash Display', sans-serif;
+    }
+    .font-sora {
+      font-family: 'Sora', sans-serif;
+    }
+}
+
+
+@layer components {
+    .btn {
+      @apply bg-blue-500 hover:bg-blue-700 text-red-500 font-clash-display font-bold py-2 px-4 rounded mt-3;
+    }
+  }
+  
+  @layer utilities {
+    .text-lg {
+      font-size: 1.125rem;
+    }
+    .btn{
+        
+    }
+  }
+/* Add more custom styles here */
