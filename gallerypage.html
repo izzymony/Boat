@@ -7,35 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="bg-black py-4 fixed w-full z-10">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-bold text-white">
-                <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50">
-            </a>
-            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
-                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
-            </button>
-        </div>
-    </nav>
-
-    <section class="py-20 mt-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4">Gallery</h2>
+    <section py-20 pt-10>
+        <div class="mx-auto px-4">
+            <h2 class="font-clash-display text-3xl font-bold mt-24 py-3">Gallery</h2>
 
             <!-- Filters -->
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex gap-4">
                 <div>
-                    <label for="price-filter" class="block text-sm font-medium text-gray-700">Filter by Price:</label>
-                    <select id="price-filter" class="block  p-2 border border-black-800 rounded">
+                    <label for="price-filter" class="block text-sm font-medium text-gray-700 font-clash-display">Filter by price</label>
+                    <select name="" id="price-filter" class="block p-2 border border-900 rounded-lg">
                         <option value="all">All</option>
                         <option value="low">Below $500</option>
-                        <option value="medium">$500 - $1000</option>
+                        <option value="medium">$500-$1000</option>
                         <option value="high">Above $1000</option>
                     </select>
                 </div>
                 <div>
-                    <label for="availability-filter" class="block text-sm font-medium text-gray-700">Filter by Availability:</label>
-                    <select id="availability-filter" class="block p-2 border border-gray-300 rounded">
+                    <label for="availability-filter" class="block text-sm font-medium text-gray-700 font-clash-display">Filter by availability</label>
+                    <select name="" id="availability-filter" class="block p-2 border border-black-800 rounded-lg">
                         <option value="all">All</option>
                         <option value="available">Available</option>
                         <option value="unavailable">Unavailable</option>
@@ -44,67 +33,68 @@
             </div>
 
             <!-- Boat Cards -->
-            <div id="boat-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Example Boat Card -->
-                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="800" data-availability="available">
-                    <img src="image/boat1.jpg" alt="Boat 1" class="w-full h-40 object-cover rounded-md mb-4">
-                    <h3 class="text-lg font-bold">Luxury Yacht</h3>
-                    <p class="text-gray-600">A luxurious yacht for your perfect vacation.</p>
-                    <p class="text-blue-500 font-bold">$800 per day</p>
-                    <p class="text-green-500 font-medium">Available</p>
-                </div>
-
-                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="400" data-availability="unavailable">
-                    <img src="image/boat2.jpg" alt="Boat 2" class="w-full h-40 object-cover rounded-md mb-4">
-                    <h3 class="text-lg font-bold">Fishing Boat</h3>
-                    <p class="text-gray-600">Perfect for fishing trips with friends.</p>
-                    <p class="text-blue-500 font-bold">$400 per day</p>
-                    <p class="text-red-500 font-medium">Unavailable</p>
-                </div>
-
-                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="1200" data-availability="available">
-                    <img src="image/boat3.jpg" alt="Boat 3" class="w-full h-40 object-cover rounded-md mb-4">
-                    <h3 class="text-lg font-bold">Speed Boat</h3>
-                    <p class="text-gray-600">Experience the thrill of speed on water.</p>
-                    <p class="text-blue-500 font-bold">$1200 per day</p>
+            <div id="boat-container" class="grid mt-6 gap-6 grid-cols-1 md:grid-cols-2">
+                <div class="boat-card border border-gray-300 shadow-lg rounded-lg p-4 cursor-pointer" data-price="800" data-availability="available" data-description="Experience thrill of speed on water, highly efficient and powerful used in recreational activities, experience the best water sport." data-image="image/pexels-isaw-company-66472-3274984.jpg">
+                    <img src="image/pexels-isaw-company-66472-3274984.jpg" alt="" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-grey-600 font-clash-display text-lg font-bold mt-2">Speed Boat</h3>
+                    <p class="text-gray-600">Experience thrill of speed on water.</p>
+                    <p class="text-blue-500 font-bold py-4">$1200 per day</p>
                     <p class="text-green-500 font-medium">Available</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-96 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <img id="modal-image" src="" alt="Boat" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 id="modal-title" class="text-lg font-bold"></h3>
+            <p id="modal-description" class="text-gray-600"></p>
+            <p id="modal-price" class="text-blue-500 font-bold"></p>
+            <p id="modal-availability" class="text-green-500 font-medium"></p>
+        </div>
+    </div>
+
     <script>
-        // Filter functionality
-        const priceFilter = document.getElementById('price-filter');
-        const availabilityFilter = document.getElementById('availability-filter');
-        const boatCards = document.querySelectorAll('.boat-card');
+        document.addEventListener("DOMContentLoaded", () => {
+            const boatCards = document.querySelectorAll(".boat-card");
+            const modal = document.getElementById("modal");
+            const modalImage = document.getElementById("modal-image");
+            const modalTitle = document.getElementById("modal-title");
+            const modalDescription = document.getElementById("modal-description");
+            const modalPrice = document.getElementById("modal-price");
+            const modalAvailability = document.getElementById("modal-availability");
+            const closeModal = document.getElementById("close-modal");
 
-        function filterBoats() {
-            const priceValue = priceFilter.value;
-            const availabilityValue = availabilityFilter.value;
+            // Open modal on card click
+            boatCards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    const image = card.dataset.image;
+                    const description = card.dataset.description;
+                    const price = card.querySelector(".text-blue-500").textContent;
+                    const availability = card.querySelector(".text-green-500, .text-red-500").textContent;
 
-            boatCards.forEach(card => {
-                const price = parseInt(card.getAttribute('data-price'));
-                const availability = card.getAttribute('data-availability');
+                    modalImage.src = image;
+                    modalTitle.textContent = card.querySelector("h3").textContent;
+                    modalDescription.textContent = description;
+                    modalPrice.textContent = price;
+                    modalAvailability.textContent = availability;
 
-                let priceMatch = false;
-                if (priceValue === 'all') priceMatch = true;
-                else if (priceValue === 'low' && price < 500) priceMatch = true;
-                else if (priceValue === 'medium' && price >= 500 && price <= 1000) priceMatch = true;
-                else if (priceValue === 'high' && price > 1000) priceMatch = true;
-
-                let availabilityMatch = availabilityValue === 'all' || availabilityValue === availability;
-
-                if (priceMatch && availabilityMatch) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                    modal.classList.remove("hidden");
+                });
             });
-        }
 
-        priceFilter.addEventListener('change', filterBoats);
-        availabilityFilter.addEventListener('change', filterBoats);
+            // Close modal
+            closeModal.addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
+        });
     </script>
 </body>
 </html>
