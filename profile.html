@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="tailwind.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <nav class="bg-black py-4 fixed top-0 w-full z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
+            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
+                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
+            </button>
+        </div>
+    </nav>
+
+    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
+        <button id="close-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
+        
+           
+        </ul>
+
+      
+    </div>
+
+    <main class="px-4 mt-44   ">
+        <form  action="send-email.php" class="py-5" id="myForm">
+            <div for="name-error" class=" text-[18px] font-clash-display font-medium">First name</div>
+            <input type="text" id="name" name="name" placeholder="Enter your name" class=" border w-full rounded-lg  p-3 border-black-600">
+            <div id="name-error" style="color: red;"></div>
+            <div for="name-error" class="mt-4 text-[18px] font-clash-display font-medium">Last name / surname</div>
+            <input type="text" name="surname" id="surname" placeholder="Enter your surname" class=" border w-full rounded-lg  p-3 mt-3 border-black-600">
+            <div id="surname-error" style="color: red;"></div>
+
+            <div for="" class="mt-4 text-[18px] font-clash-display font-medium">Email</div>
+            <div id="Email" style="color: red;"></div>
+            <input type="text" id="email" name="email" placeholder="Email" class=" border w-full rounded-lg  p-3 border-black-600 mt-3">
+            <div for="" class="mt-4 text-[18px] font-clash-display font-medium">Phone number</div>
+            <input type="text" id="phone" name="phone" placeholder="Phone number" class=" border w-full rounded-lg  p-3 border-black-600 mt-3">
+            <div id="phone-error" style="color: red;"></div>
+            <div for="" class="mt-4 text-[18px] font-clash-display font-medium">Address</div>
+            <input type="text" id="address" name="address" placeholder="Address" class=" border w-full rounded-lg  p-3 border-black-600 mt-3">
+            <div id="address-error" style="color: red;"></div>
+            <input type="text" id="postal" name="postal" placeholder="Postal" class=" border w-full rounded-lg  p-3 border-black-600 mt-3">
+            <div id="postal-error" style="color: red;"></div>
+
+            <input type="text" id="city" name="city" placeholder="city" class=" border w-full rounded-lg  p-3 border-black-600 mt-3">
+            <div id="city-error" style="color: red;"></div>
+            <div for="date" class="mt-4 text-[18px] font-clash-display font-medium">Date of Birth</div>
+            <input type="date" id="date" name="date" class="border w-full rounded-lg p-3 border-black-600 mt-3">
+            <div id="date-error" style="color: red;"></div>
+            <button class="bg-black p-2 w-full mt-3 rounded-lg text-white font-clash-display"><p class="font-clash-display font-medium"> Send</p></button>
+        </form>
+    </main>
+</body>
+</html>
