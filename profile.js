@@ -81,3 +81,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Define the mapping between image IDs and content section IDs
+    const contentMap = {
+        'image-profile': 'content-profile',
+        'image-dashboard': 'content-dashboard',
+        'image-booking': 'content-booking',
+        'image-settings': 'content-settings',
+        'image-help': 'content-help',
+    };
+
+    // Add click event listeners to each image
+    document.querySelectorAll('.clickable-image').forEach((image) => {
+        image.addEventListener('click', () => {
+            // Hide all content sections
+            document.querySelectorAll('.dynamic-section').forEach((section) => {
+                section.classList.add('hidden');
+            });
+
+            // Show the content section corresponding to the clicked image
+            const contentId = contentMap[image.id];
+            if (contentId) {
+                document.getElementById(contentId).classList.remove('hidden');
+            }
+        });
+    });
+
+    // Set default content (for the profile form)
+    document.getElementById('content-profile').classList.remove('hidden');
+});

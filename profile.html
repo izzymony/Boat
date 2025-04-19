@@ -44,19 +44,22 @@
     </div>
     </div>
     <div class="  p-3 px-4  ">
-        <div class=" bg-white border border-2-blur  shadow-md rounded-lg p-4 mt-24 mx-auto">
+        <div class=" bg-white py-4 border border-2-blur  shadow-md rounded-lg p-4 mt-24 mx-auto">
         <div class="flex gap-4 items-center justify-between px-2">
-            <div>
-            <img src="image/icons8-person-24.png" alt="">
+            <div class=" hover:bg-gray-400 hover:opacity-30 p-2 rounded-full cursor-pointer">
+            <img src="image/icons8-person-24.png" alt="" id="image-profile" class="clickable-image">
         </div>
-            <img src="image/icons8-dashboard-24 (1).png" alt="">
-            <img src="image/icons8-booking-24.png" alt="">
+            <img src="image/icons8-dashboard-24 (1).png" alt="" id="image-dashboard" class="clickable-image">
+            <img src="image/icons8-booking-24.png" alt="" id="image-booking" class="clickable-image">
             <img src="image/icons8-dashboard-24 (1).png" alt="">
             <img src="image/icons8-dashboard-24 (1).png" alt="">
         </div>
     </div>
     </div>
-    <main class="px-4 mt-20   ">
+    
+    <main class="px-4 mt-20   " >
+
+        <div id="content-profile" class="dynamic-section hidden">
       
         <form id="myForm" class="py-5">
             <div class="text-[18px] font-clash-display font-medium">First name</div>
@@ -95,7 +98,49 @@
                 <p class="font-clash-display font-medium">Save</p>
             </button>
         </form>
+    </div>
+    <div id="content-dashboard" class="dynamic-section hidden">
+        <h1 class=" font-clash-display text text-black text-center text-2xl font-bold">My Boat <span class="text-white bg-black p-2 rounded-lg">Listings</span> </h1>
+        <hr class="mt-4 mb-4 border-gray-300">
+            <div class="mt-6">
+                <p class="text-center font-bold font-clash-display text-xl">Register a boat</p>
+            </div>
+        <div>
+            
+        </div>
+    </div>
+    
+    
+    <div id="content-booking" class="dynamic-section hidden">
+        <p class="text-gray-700">This is the booking content. Manage your bookings here.</p>
+    </div>
+    
+    <div id="content-settings" class="dynamic-section hidden">
+        <p class="text-gray-700">This is the settings content. Update your preferences here.</p>
+    </div>
+    
     </main>
     <script src="profile.js"></script>
 </body>
+<footer class="bg-black mt-24 py-10">
+    <div class="text-center ">
+       <div class="text-white text-xl font-semibold font-clash-display ">Customer</div>
+       <ol class="font-sora text-white font-lg font-sora mt-3"> <a href="contact.html"> Contact</a></ol>
+       <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> FAQ</a></ol>
+      
+    </div> 
+    <div class="text-center mt-10">
+       <div class="text-white text-xl font-semibold font-clash-display ">Customer</div>
+       <ol class="font-sora text-white font-lg font-sora mt-3"> <a href=""> Contact</a></ol>
+       <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> FAQ</a></ol>
+      
+    </div> 
+    <div class="text-center mt-10">
+       <div class="text-white text-xl font-semibold font-clash-display ">Customer</div>
+       <ol class="font-sora text-white font-lg font-sora mt-3"> <a href=""> Contact</a></ol>
+       <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> FAQ</a></ol>
+      
+    </div>
+    <img src="image/boatmu_logo_4 (1).png" alt="" class="mx-auto  w-40 mt-5"> 
+   </footer>
 </html>
