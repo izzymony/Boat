@@ -34,3 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('content-general').classList.remove('hidden');
     document.getElementById('tab-general').classList.add('active-tab');
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const apiKey = 'VnzbtolLriOTOGJUrGAop8Pc4pnjLPALfSD27dG6TToQERROmSjCM28Z'; // Replace with your Pexels API key
+    const endpoint = 'https://api.pexels.com/v1/search?query=boats&per_page=12';
+
+    // Fetch boat photos
+    fetch(endpoint, {
+        headers: {
+            Authorization: apiKey,
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            const photoGrid = document.getElementById('photo-grid');
+            data.photos.forEach((photo) => {
+                const photoDiv = document.createElement('div');
+                photoDiv.classList.add('relative', 'group');
+
+                photoDiv.innerHTML = `
+                    <img src="${photo.src.medium}" alt="${photo.alt}" class="w-full h-48 object-cover rounded-lg shadow-md">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white font-bold">${photo.photographer}</p>
+                    </div>
+                `;
+                photoGrid.appendChild(photoDiv);
+            });
+        })
+        .catch((error) => console.error('Error fetching photos:', error));
+});

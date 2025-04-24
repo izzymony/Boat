@@ -22,8 +22,8 @@
     />
 </head>
 <body>
-    <main class="px-4 mt-20">
-        <div class="bg-white border border-3-blur shadow-lg rounded-lg mt-40 p-4">
+    <main class="px-4 ">
+        <div class="bg-white border border-3-blur shadow-lg rounded-lg mt-10 p-4">
     <div class="bg-black px-2 p-3 rounded-lg mt-8 px-4">
         <div id="tab-general" class="flex gap-2 tab clickable-tab">
             <img src="image/icons8-settings-50 (1).png" alt="" class="w-6 h-6">
@@ -126,6 +126,10 @@
     
     <div id="content-photos" class="dynamic-content hidden">
         <p class="text-black font-sora">This is the Photos content.</p>
+
+        <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Photos will be dynamically added here -->
+        </div>
     </div>
     
     <div id="content-specifications" class="dynamic-content hidden">
