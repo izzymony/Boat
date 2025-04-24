@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="tailwind.css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="tailwind.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap"
       rel="stylesheet"
@@ -17,62 +22,30 @@
     />
 </head>
 <body>
-    <nav class="bg-black py-4 fixed top-0 w-full z-10">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
-            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
-                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
-            </button>
+    <main class="px-4 mt-20">
+    <div class="bg-black px-2 p-3 rounded-lg mt-8 px-4">
+        <div id="tab-general" class="flex gap-2 tab clickable-tab">
+            <img src="image/icons8-settings-50 (1).png" alt="" class="w-6 h-6">
+            <p class="font-sora text-[25px] text-white" style="font-size: 17px;">General Information</p>
         </div>
-    </nav>
-
-    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
-        <button id="close-menu" class="absolute top-4 right-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
-        
-           
-        </ul>
-
-      
     </div>
-
-    <main class="px-4">
-        <div class="bg-white border border-3-blur shadow-lg rounded-lg mt-40 p-4">
-            <div class=''>
-            <h1 class="font-bold font-clash-display text-2xl mt-3 text-black" >Ahoy there sailor!</h1>
-
-            <p class="font-sora mt-2 text-black " style="font-size: 17px;">Welcome  to the boat details form! Here is where you can provide all the necessary information about your boat ad.</p>
-        </div>
-        <div class="bg-black px-2 p-3 rounded-lg mt-8 px-4 ">
-            <div class="flex gap-2">
-            <img src="image/icons8-settings-50 (1).png" alt="" class="w-6 h-6  ">
-            <p  class="font-sora text-[25px] text-white" style="font-size: 17px;" >General Information</p>
-        </div>
-
-       
-        </div>
-        <div class=" px-2 p-3">
-        <div class="mt-2 flex gap-2">
-            <img src="image/icons8-photos-24.png" alt="" class="grayscale brightness-20 ">
+    
+    <div class="px-2 p-3">
+        <div id="tab-photos" class="mt-2 flex gap-2 tab clickable-tab">
+            <img src="image/icons8-photos-24.png" alt="" class="grayscale brightness-20">
             <p class="font-sora text-[25px] text-[#EBEBEB]" style="font-size: 17px; color: #EBEBEB;">Photos</p>
         </div>
     </div>
-        <div class=" px-2 p-3">
-        <div class="mt-2 flex gap-2">
-            <img src="image/icons8-photos-24.png" alt="" class="grayscale brightness-20 ">
-            <p class="font-sora text-[25px] text-[#EBEBEB]" style="font-size: 17px; color: #EBEBEB;">Photos</p>
+    
+    <div class="px-2 p-3">
+        <div id="tab-specifications" class="mt-2 flex gap-2 tab clickable-tab">
+            <img src="image/icons8-photos-24.png" alt="" class="grayscale brightness-20">
+            <p class="font-sora text-[25px] text-[#EBEBEB]" style="font-size: 17px; color: #EBEBEB;">Specifications</p>
         </div>
     </div>
-        <div class=" px-2 p-3">
-        <div class="mt-2 flex gap-2">
-            <img src="image/icons8-photos-24.png" alt="" class="grayscale brightness-20 ">
-            <p class="font-sora text-[25px] text-[#EBEBEB]" style="font-size: 17px; color: #EBEBEB;">Photos</p>
-        </div>
-    </div>
-        </div>
-
+    
+    <!-- Dynamic Content Sections -->
+    <div id="content-general" class="dynamic-content hidden">
         <div class="text-2xl mt-8 font-clash-display font-medium text-black">General <span class="text-white p-2 rounded-lg  bg-black">Information</span></div>
         <hr class="mt-4 mb-4 border-gray-300">
         <h1 class="text-black font-medium font-clash-display" style="font-size:20px;">Basic Information</h1>
@@ -83,19 +56,83 @@
             <input type="text" id="name" name="name" placeholder="Boat name*" class="border w-full rounded-lg p-3 border-black-600" required>
             <div id="name-error" style="color: red;"></div>
 
-            <input type="text" id="name" name="name" placeholder="Company" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required>
+            <input type="text" id="company" name="name" placeholder="Company" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required>
             <div id="company-error" style="color: red;"></div>
 
-            <input type="text" id="name" name="name" placeholder="Company" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required>
+            <input type="text" id="companyWeb" name="name" placeholder="Company website" class="border mt-7 w-full rounded-lg p-3 border-black-600"  >
+            <div id="company-web-error" style="color: red;"></div>
+
+            <input type="text" id="depart" name="name" placeholder="Place of Departure*" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required >
+            <div id="depart-error" style="color: red;"></div>
+
+            <textarea name="" id="message" placeholder="Description of trip*" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required></textarea>
             <div id="company-error" style="color: red;"></div>
 
-            <input type="text" id="name" name="name" placeholder="Company" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required>
-            <div id="company-error" style="color: red;"></div>
+            <hr class="mt-4 mb-4 border-gray-300">
+            <h1 class="text-black font-medium font-clash-display" style="font-size:20px;">Boat Specifications</h1>
+            <p class="font-clash-display font-sora font-medium" style="font-size: 17px;"> please fill in your boat specification below as listed.</p>
 
-            <input type="text" id="name" name="name" placeholder="Company" class="border mt-7 w-full rounded-lg p-3 border-black-600"  required>
-            <div id="company-error" style="color: red;"></div>
+           <select name="Boat type" id="" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <option value="" disabled selected  class="border mt-7 w-full rounded-lg p-3 border-grey-200 " style="font-size: 16px; color: grey;"> Boat Type</option>
+            <option value="">Yacht</option>
+            <option value="">Sailboat</option>
+            <option value="">Motorboat</option>
+            <option value="">Catamaran</option>
+            <option value="">Speedboat</option>
+            <option value="">Fishing boat</option>
+           </select>
+
+           <select name="" id=""  class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <option value="" disabled selected>Manufacturer's</option>
+            <option value="Benz">Beneteau</option>
+            <option value="">Bayliner</option>
+            <option value="">Boston</option>
+            <option value="">chaparral</option>
+           </select>
+          <input type="text" id="model" name="model" placeholder="Model*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+          <input type="text" id="length" name="length" placeholder="Length*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+          <input type="text" id="capacity" name="capacity" placeholder="Capacity*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+          <input type="date" id="capacity" name="capacity" placeholder="Capacity*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+          <input type="text" id="License number" name="License" placeholder="License number*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+          <input type="text" id="capacity" name="capacity" placeholder="Capacity*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+            <input type="text" id="engine-brand" name="engine-brand" placeholder="Engine brand*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+            <input type="text" id="engine-type" name="engine-brand" placeholder="Engine type*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+
+          <input type="text" id="engine-power" name="engine-power" placeholder="Engine power*" class="border mt-7 w-full rounded-lg p-3 border-black-600" required>
+            <div id="model-error" style="color: red;"></div>
+          
+      
         </div>
         </form>
+
+        <button class="bg-black text-white p-2 font-clash-display font-bold mt-3 w-32 rounded-lg">Save</button>
+    </div>
+    </div>
+    
+    <div id="content-photos" class="dynamic-content hidden">
+        <p class="text-black font-sora">This is the Photos content.</p>
+    </div>
+    
+    <div id="content-specifications" class="dynamic-content hidden">
+        <p class="text-black font-sora">This is the Specifications content.</p>
+    </div>
     </main>
+    <script src="dash.js"></script>
+
 </body>
+
 </html>
