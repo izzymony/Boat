@@ -125,18 +125,57 @@
     </div>
     
     <div id="content-photos" class="dynamic-content hidden">
-        <p class="text-black font-sora">This is the Photos content.</p>
-
-        <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <!-- Photos will be dynamically added here -->
         </div>
     </div>
     
     <div id="content-specifications" class="dynamic-content hidden">
-        <p class="text-black font-sora">This is the Specifications content.</p>
-    </div>
+      <!-- Popup Modal -->
+
+      <h1 class="text-2xl font-clash-display font-medium text-black mb-6">Boat Availability Calendar</h1>
+      <p class="text-gray-600 font-sora mb-4">Select the dates when the boat is available for booking.</p>
+  
+      <div class="bg-white border border-gray-300 rounded-lg shadow-md p-6">
+          <!-- Calendar Header -->
+          <div class="flex justify-between items-center mb-4">
+              <button id="prev-month" class="bg-gray-200 p-2 rounded-lg hover:bg-gray-300">Previous</button>
+              <h2 id="calendar-title" class="text-lg font-bold"></h2>
+              <button id="next-month" class="bg-gray-200 p-2 rounded-lg hover:bg-gray-300">Next</button>
+          </div>
+  
+          <!-- Days of the Week -->
+          <div class="grid grid-cols-7 gap-2 text-center font-bold text-gray-700">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+          </div>
+  
+          <!-- Calendar Dates -->
+          <div id="calendar-dates" class="grid grid-cols-7 gap-2 text-center mt-2">
+              <!-- Dates will be dynamically generated here -->
+          </div>
+      </div>
+      <!-- Popup Modal -->
+<div id="popup-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+      <h2 class="text-lg font-bold mb-4">Confirm Availability</h2>
+      <p id="selected-dates-list" class="text-gray-700 mb-4">No dates selected.</p>
+      <div class="flex justify-end gap-4">
+          <button id="cancel-popup" class="bg-gray-200 p-2 rounded-lg hover:bg-gray-300">Cancel</button>
+          <button id="confirm-popup" class="bg-black text-white p-2 rounded-lg">Confirm</button>
+      </div>
+  </div>
+</div>
+      <button id="save-calendar" class="bg-black text-white p-2 rounded-lg mt-4">Save Availability</button>
+  </div>
+
     </main>
-    <script src="dash.js"></script>
+        <script src="dash.js"></script>
 
 </body>
 
