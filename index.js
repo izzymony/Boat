@@ -1,7 +1,7 @@
 // Define menu items
 const menuItems = [
     { text: 'Home', href: '#' },
-    { text: 'Help', href: '#' },
+    { text: 'Help', href: 'contact.html' },
     { text: 'Login', href: 'signin.html' }, // Updated href to point to signin.html
 ];
 
@@ -25,6 +25,13 @@ menuItems.forEach((item) => {
             e.preventDefault(); // Prevent default link behavior
             window.location.href = 'signin.html'; // Redirect to signin.html
         });
+
+        if(item.text === 'Help'){
+            link.addEventListener('click' , (e) => {
+                e.preventDefault();
+                window.location.href = 'contact.html'
+            })
+        }
     }
 
     menuItem.appendChild(link);

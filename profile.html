@@ -17,7 +17,7 @@
     />
 </head>
 <body>
-    <nav class="bg-black py-4 fixed top-0 w-full z-10">
+    <nav class="bg-black py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
             <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
@@ -37,6 +37,7 @@
 
       
     </div>
+
     <div class=" popup  p-3 px-4 top-50 left-50 fixed inset-0 flex items-center justify-center bg-opacity-50 z-50" style="display: none;">
         <div class=" bg-black shadow-md rounded-lg p-4 mt-24 mx-auto">
         <p class='text-center text-white font-bold font-clash-display text-[20px]'>Profile successfully saved</p>
@@ -123,11 +124,13 @@
     
     
     <div id="content-booking" class="dynamic-section hidden">
-        <p class="text-gray-700">This is the booking content. Manage your bookings here.</p>
-    </div>
-    
-    <div id="content-settings" class="dynamic-section hidden">
-        <p class="text-gray-700">This is the settings content. Update your preferences here.</p>
+        <h1 class="text-2xl font-clash-display font-medium text-black mb-6 font-bold">Booking Availability</h1>
+        <p class="text-gray-600 font-sora mb-4">Below are the dates that have been booked:</p>
+        <div class="bg-gray-100 border border-gray-300 rounded-lg shadow-md p-4">
+            <ul id="booked-dates-list" class="list-disc pl-5 text-gray-700 space-y-2">
+                <!-- Booked dates will be dynamically added here -->
+            </ul>
+        </div>
     </div>
     
     </main>

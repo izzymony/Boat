@@ -64,13 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch((error) => console.error('Error fetching photos:', error));
 });
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const calendarTitle = document.getElementById('calendar-title');
     const calendarDates = document.getElementById('calendar-dates');
     const prevMonthButton = document.getElementById('prev-month');
     const nextMonthButton = document.getElementById('next-month');
 
-    let currentDate = new Date();
+    let currentDate = new Date(); // Ensure this is globally accessible
 
     // Function to render the calendar
     function renderCalendar(date) {
@@ -103,8 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
             dateDiv.textContent = day;
             dateDiv.className = 'p-2 rounded-lg hover:bg-gray-200 cursor-pointer';
             dateDiv.addEventListener('click', () => {
-                dateDiv.classList.toggle('bg-green-500');
-                dateDiv.classList.toggle('text-white');
+                const formattedDate = `${monthNames[month]} ${day}, ${year}`;
+                if (selectedDates.includes(formattedDate)) {
+                    selectedDates = selectedDates.filter((d) => d !== formattedDate);
+                    dateDiv.classList.remove('bg-green-500', 'text-white');
+                } else {
+                    selectedDates.push(formattedDate);
+                    dateDiv.classList.add('bg-green-500', 'text-white');
+                }
+                console.log('Selected Dates:', selectedDates);
             });
             calendarDates.appendChild(dateDiv);
         }
@@ -125,8 +134,49 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCalendar(currentDate);
 });
 
+
+
+
+// Show popup on save button click
+
+    // Update the modal content with selected dates
+    
+
+
+
+function toggleActive() {
+  const tab = document.getElementById('tab-photos');
+  const img = document.getElementById('tab-photo-img');
+  const text = document.getElementById('tab-photo-text');
+
+  tab.classList.toggle('bg-black');   // Background black
+  tab.classList.toggle('text-white');  // Text becomes white
+  img.classList.toggle('grayscale-0'); // Remove grayscale if active
+  img.classList.toggle('brightness-100'); // Full brightness if active
+}
+
+document.querySelectorAll('.clickable-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+        // Remove active state from all tabs
+        document.querySelectorAll('.clickable-tab').forEach((t) => {
+            t.classList.remove('bg-black', 'text-white');
+            t.querySelector('img').classList.remove('brightness-100');
+        });
+
+        // Add active state to the clicked tab
+        tab.classList.add('bg-black', 'text-white');
+        tab.querySelector('img').classList.add('brightness-100');
+    });
+});
+
 let selectedDates = [];
-let currentDate = new Date(); // Track the current month and year
+let selectedBoat = null;
+
+// Handle boat selection
+document.getElementById('boat-selection').addEventListener('change', (event) => {
+    selectedBoat = event.target.value;
+    console.log('Selected Boat:', selectedBoat);
+});
 
 // Handle date selection
 document.getElementById('calendar-dates').addEventListener('click', (event) => {
@@ -157,12 +207,17 @@ document.getElementById('calendar-dates').addEventListener('click', (event) => {
 
 // Show popup on save button click
 document.getElementById('save-calendar').addEventListener('click', () => {
+    if (!selectedBoat) {
+        alert('Please select a boat before saving availability.');
+        return;
+    }
+
     const modal = document.getElementById('popup-modal');
     const datesList = document.getElementById('selected-dates-list');
 
-    // Update the modal content with selected dates
+    // Update the modal content with selected boat and dates
     if (selectedDates.length > 0) {
-        datesList.textContent = `Selected Dates: ${selectedDates.join(', ')}`;
+        datesList.textContent = `Boat: ${selectedBoat}\nSelected Dates: ${selectedDates.join(', ')}`;
     } else {
         datesList.textContent = 'No dates selected.';
     }
@@ -180,10 +235,14 @@ document.getElementById('cancel-popup').addEventListener('click', () => {
 document.getElementById('confirm-popup').addEventListener('click', () => {
     const modal = document.getElementById('popup-modal');
 
-    // Save selected dates to localStorage
-    localStorage.setItem('selectedDates', JSON.stringify(selectedDates));
+    // Save selected boat and dates to localStorage
+    const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    bookings.push({ boat: selectedBoat, dates: selectedDates });
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+
     alert('Availability saved!');
 
     // Hide the modal
     modal.classList.add('hidden');
 });
+

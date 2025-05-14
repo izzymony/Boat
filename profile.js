@@ -111,3 +111,84 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set default content (for the profile form)
     document.getElementById('content-profile').classList.remove('hidden');
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const bookedDatesList = document.getElementById('booked-dates-list');
+    
+    // Fetch booked dates from localStorage (or replace with API call)
+    const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+    // Populate the booked dates list
+    if (bookings.length > 0) {
+        bookings.forEach((booking) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'mb-4 p-4 bg-white rounded-lg shadow-md';
+           
+            listItem.innerHTML = `
+                <h3 class="font-bold text-lg text-black">${booking.boat}</h3>
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                    ${booking.dates.map(date => `<li>${date}</li>`).join('')}
+                </ul>
+            `;
+            bookedDatesList.appendChild(listItem);
+
+        });
+    } else {
+        const noBookingsMessage = document.createElement('p');
+        noBookingsMessage.textContent = 'No bookings available.';
+        noBookingsMessage.className = 'text-gray-500 italic';
+        bookedDatesList.appendChild(noBookingsMessage);
+    }
+});
+
+
+// Define menu items
+const menuItems = [
+    { text: 'Home', href: 'index.html' },
+    { text: 'Help', href: 'contact.html' },
+    { text: 'Profile', href: 'profile.html' }, // Updated href to point to signin.html
+];
+
+// Get the menu element
+const menu = document.getElementById('menu');
+const menuContainer = document.getElementById('menu-container');
+const toggleMenu = document.getElementById('toggle-menu');
+const closeMenu = document.getElementById('close-menu');
+
+// Generate menu items
+menuItems.forEach((item) => {
+    const menuItem = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = item.href; // Use the href from the menuItems array
+    link.textContent = item.text;
+    link.classList.add('block', 'py-6', 'px-4', 'text-black', 'hover:bg-gray-100', 'font-medium');
+
+    // Add event listener for "Login" link
+    if (item.text === 'Help') {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            window.location.href = 'contact.html'; // Redirect to signin.html
+        });
+
+        if(item.text === 'Home'){
+            link.addEventListener('click' , (e) => {
+                e.preventDefault();
+                window.location.href = 'index.html'
+            })
+        }
+    }
+
+    menuItem.appendChild(link);
+    menu.appendChild(menuItem);
+});
+
+// Toggle menu on mobile devices
+toggleMenu.addEventListener('click', () => {
+    menuContainer.classList.toggle('hidden');
+});
+
+// Close menu
+closeMenu.addEventListener('click', () => {
+    menuContainer.classList.toggle('hidden');
+});
+
