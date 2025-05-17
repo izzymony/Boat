@@ -103,6 +103,16 @@ closeMenu.addEventListener('click', () => {
       description: "Comfortable transport for large groups"
     },
       {
+      name: "Military submarine",
+      type: "Military ship",
+      island: "East",
+      activity: "Military missile testing",
+      capacity: 120,
+      price: "$18,000/day",
+      image: "image/USS_Independence_(LCS-2)_at_Naval_Air_Station_Key_West_on_29_March_2010_(100329-N-1481K-298).jpg",
+      description: "Comfortable transport for large groups"
+    },
+      {
       name: "Island Weaver Ferry",
       type: "Ferry",
       island: "Island",
@@ -115,74 +125,8 @@ closeMenu.addEventListener('click', () => {
     // Add more boats matching your dropdown options
   ];
 
-/*
-  document.addEventListener('DOMContentLoaded', function(){
-    const searchButton = document.getElementById ('searchButton')
-    
-    searchButton.addEventListener('click', function(){
-        const boatType = document.getElementById('Boat-dropdown');
-        const island = document.getElementById('islandDropdown');
-        const activity = document.getElementById('activitiesDropdown');
 
-        const results = boatData.filter(boat =>{
-          return(!boatType || boat.type === boatType)&&
-                (!island || boat.island ===  island)&&
-                (!activity || boat.activity === activity)
-        })
-        //DISPLAY RESULTS
-        displayResults(results);
-    })
-
-   
-  })
-
-  function displayResults(boats){
-    const container = document.getElementById('searchResults')
-    if(boats === 0){
-      container.innerHTML = `
-      <div class="col-span-full text-center py-12">
-          <p class="text-gray-500 text-lg">No boats found matching your criteria</p>
-        </div>
-        `;
-        return
-    }
-
-   container.innerHTML = boats.map(boat => `
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        <img src="${boat.image}" alt="${boat.name}" 
-             class="w-full h-48 object-cover"
-             onerror="this.src='https://via.placeholder.com/400x300?text=Boat+Image'">
-        <div class="p-6">
-          <div class="flex justify-between items-start">
-            <h3 class="text-xl font-bold text-gray-900">${boat.name}</h3>
-            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">${boat.price}</span>
-          </div>
-          
-          <p class="mt-2 text-gray-600">${boat.description}</p>
-          
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-              ${boat.type}
-            </span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-              ${boat.island}
-            </span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-              ${boat.activity}
-            </span>
-          </div>
-          
-          <div class="mt-6 flex justify-between items-center">
-            <span class="text-sm font-medium text-gray-500">Capacity: ${boat.capacity} people</span>
-            <button class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">
-              Book Now
-            </button>
-          </div>
-        </div>
-      </div>
-    `)
-  } 
- */
+ 
   // Wait for DOM to load
   document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
@@ -211,6 +155,19 @@ closeMenu.addEventListener('click', () => {
       displayResults(results);
     });
   });
+
+  function bookBoat(boatData){
+    try{
+      const boat = JSON.parse(decodeURIComponent(boatData));
+      localStorage.setItem('bookedBoat', JSON.stringify(boat))
+
+      window.location.href = 'Booking.html';
+
+    } catch (error){
+      console.error('Error booking:' ,error);
+      alert('There was an error processing your booking, Please try again.')
+    }
+  }
 
   // Function to display results
   function displayResults(boats) {
@@ -259,4 +216,7 @@ closeMenu.addEventListener('click', () => {
         </div>
       </div>
     `).join('');
+
+   
+
   }

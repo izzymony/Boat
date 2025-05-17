@@ -24,34 +24,81 @@
  
 </head>
 <body>
-       <nav class="bg-black py-4 fixed top-0 w-full z-10">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
-        <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
-            <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
-        </button>
-    </div>
-</nav>
-
-<div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
-    <button id="close-menu" class="absolute top-4 right-4">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-    </button>
-    <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
-    
-       
-    </ul>
-
-  
-</div>
-    <main class="px-4 ">
-        <div class="bg-white border border-3-blur shadow-lg rounded-lg  mt-40 p-4">
-          <div class="grid grid-cols-1 gap-7">
-    <div class="bg-black px-2 p-3 rounded-lg mt-8 px-4">
-        <div id="tab-general" class="flex gap-2 tab clickable-tab">
-            <img src="image/icons8-settings-50 (1).png" alt="" class="w-6 h-6">
-            <p class="font-sora text-[25px] text-white" style="font-size: 17px;">General Information</p>
+   <nav class="bg-black py-4 fixed w-full z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
+            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
+                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
+            </button>
         </div>
-    </div>        
+    </nav>
+
+    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
+        <button id="close-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
+        
+           
+        </ul>
+
+      
+    </div>
+   <main>
+              <div class='pt-16'>
+       <div id="bookingDetails" class="p-8 max-w-2xl mx-auto ">
+        <h1 class="text-2xl font-bold mb-6">Booking Details</h1>
+        <div id="boatInfo" class="bg-white p-6 rounded-lg shadow">
+            <!-- Boat details will be inserted here -->
+        </div>
+    </div>
+    </div>
+    <!-- Confirmation Popup -->
+<div id="confirmationPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl shadow-xl w-full max-w-md mx-4 overflow-hidden">
+    <!-- Header -->
+    <div class="bg-green-100 p-4 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <h3 class="text-lg font-semibold text-green-800">Booking Confirmed</h3>
+    </div>
+    
+    <!-- Content -->
+    <div class="p-6">
+      <div class="flex items-center justify-center mb-4">
+        <div class="bg-green-50 rounded-full p-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+      </div>
+      
+      <p class="text-center text-gray-700 mb-2">Your booking for <span id="confirmedBoatName" class="font-semibold"></span> has been confirmed!</p>
+      <p class="text-center text-gray-500 text-sm mb-6">A confirmation has been sent to your email.</p>
+      
+      <div class="bg-gray-50 rounded-lg p-4 mb-6">
+        <div class="flex justify-between mb-2">
+          <span class="text-gray-600">Boat Type:</span>
+          <span id="confirmedBoatType" class="font-medium"></span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span class="text-gray-600">Total Price:</span>
+          <span id="confirmedBoatPrice" class="font-bold text-blue-600"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-600">Booking Reference:</span>
+          <span class="font-mono text-sm">#${Math.floor(Math.random() * 1000000)}</span>
+        </div>
+      </div>
+      
+      <button onclick="closeConfirmation()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition duration-200">
+        Return to Home
+      </button>
+    </div>
+  </div>
+</div>        
+   </main>
+   <script src="Booking.js"></script>
 </body>
 </html>
