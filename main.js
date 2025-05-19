@@ -3,6 +3,7 @@ const menuItems = [
     {text: 'Help', href: '#'},
     {text: 'Profile', href: '#', type: 'Profile'},
     {text: 'Bookings', href: '#', type: 'Bookings'},
+    {text: 'history', href: '#', type: 'history'}
 ]
 
 const menu = document.getElementById('menu');
@@ -28,6 +29,12 @@ menuItems.forEach((item) => {
       link.addEventListener('click', (e) =>{
         e.preventDefault();
         window.location.href = 'Booking.html'
+      })
+    }
+    if(item.text === 'history'){
+      link.addEventListener('click', (e) =>{
+        e.preventDefault();
+        window.location.href = 'history.html'
       })
     }
     menuItem.appendChild(link);

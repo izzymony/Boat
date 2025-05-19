@@ -97,16 +97,37 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="p-6 text-center">
                 <h2 class="text-xl font-semibold mb-2">No Booking Found</h2>
                 <p class="text-gray-600 mb-4">Please go back and select a boat to book.</p>
-                <a href="index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-200">
+                <a href="main.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-200">
                     Return to Boat Selection
                 </a>
             </div>`;
     }
 });
 
+
 function confirmBooking() {
     const popup = document.getElementById('confirmationPopup');
     const popupContent = popup.querySelector('div > div');
+    const bookedBoat = JSON.parse(localStorage.getItem('bookedBoat'));
+    
+    // Generate booking reference
+    const bookingRef = `#${Math.floor(100000 + Math.random() * 900000)}`;
+    const bookingDate = new Date().toLocaleDateString();
+    
+    // Create booking history item
+    const bookingHistoryItem = {
+        ...bookedBoat,
+        bookingRef,
+        bookingDate,
+        status: 'Confirmed'
+    };
+    
+    // Get existing bookings or create new array
+    let bookingsHistory = JSON.parse(localStorage.getItem('bookingsHistory')) || [];
+    bookingsHistory.push(bookingHistoryItem);
+    
+    // Save to localStorage
+    localStorage.setItem('bookingsHistory', JSON.stringify(bookingsHistory));
     
     // Show popup with animation
     popup.classList.remove('hidden');
@@ -115,13 +136,22 @@ function confirmBooking() {
         popupContent.classList.add('scale-100', 'opacity-100');
     }, 10);
     
-    // Clear storage
+    // Clear current booking but keep history
     localStorage.removeItem('bookedBoat');
+    
+    // Change the button to view bookings
+    const closeButton = popup.querySelector('button[onclick="closeConfirmation()"]');
+    closeButton.textContent = 'View My Bookings';
+    closeButton.onclick = function() {
+        closeConfirmation();
+        window.location.href = "history.html";
+    };
     
     // Auto-close after 5 seconds
     setTimeout(() => {
         if (!popup.classList.contains('hidden')) {
             closeConfirmation();
+            window.location.href = "history.html";
         }
     }, 5000);
 }
@@ -137,6 +167,6 @@ function closeConfirmation() {
     // Hide after animation completes
     setTimeout(() => {
         popup.classList.add('hidden');
-        window.location.href = "index.html";
-    }, 300);
+        window.location.href = "main.html";
+    }, 3000);
 }
