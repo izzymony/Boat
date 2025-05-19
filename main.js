@@ -71,6 +71,66 @@ closeMenu.addEventListener('click', () => {
     {
       name: "Luxury Dream Yacht",
       type: "yacht",
+      island: "Snake Island",
+      activity: "Boat cruise",
+      capacity: 12,
+      price: "$1200/day",
+      image: "image/pexels-hakan-demir-1322898384-32146982.jpg",
+      description: "Premium luxury yacht with 5 cabins, jacuzzi, and professional crew."
+    },
+    {
+      name: "Luxury Dream Yacht",
+      type: "yacht",
+      island: "Snake Island",
+      activity: "Boat cruise",
+      capacity: 12,
+      price: "$1200/day",
+      image: "image/pexels-hakan-demir-1322898384-32146982.jpg",
+      description: "Premium luxury yacht with 5 cabins, jacuzzi, and professional crew."
+    },
+    {
+      name: "Luxury Dream Yacht",
+      type: "yacht",
+      island: "Snake Island",
+      activity: "Boat cruise",
+      capacity: 12,
+      price: "$1200/day",
+      image: "image/pexels-pixabay-209978.jpg",
+      description: "Premium luxury yacht with 5 cabins, jacuzzi, and professional crew."
+    },
+    {
+      name: "Luxury Dream Yacht",
+      type: "yacht",
+      island: "Snake Island",
+      activity: "Boat cruise",
+      capacity: 12,
+      price: "$1200/day",
+      image: "image/pexels-mali-42091.jpg",
+      description: "Premium luxury yacht with 5 cabins, jacuzzi, and professional crew."
+    },
+    {
+      name: "Luxury Dream Yacht",
+      type: "yacht",
+      island: "Snake Island",
+      activity: "Boat cruise",
+      capacity: 12,
+      price: "$1200/day",
+      image: "image/pexels-hakan-demir-1322898384-32146982.jpg",
+      description: "Premium luxury yacht with 5 cabins, jacuzzi, and professional crew."
+    },
+    {
+      name: "Luxury Dream Yacht",
+      type: "yacht",
+      island: "Snake Island",
+      activity: "Boat cruise",
+      capacity: 12,
+      price: "$1200/day",
+      image: "image/pexels-freestockpro-1007836.jpg",
+      description: "Premium luxury yacht with 5 cabins, jacuzzi, and professional crew."
+    },
+    {
+      name: "Luxury Dream Yacht",
+      type: "yacht",
       island: "North",
       activity: "Fun and games",
       capacity: 12,
