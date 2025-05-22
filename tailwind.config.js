@@ -3,16 +3,16 @@ module.exports = {
     purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
       extend: {
-        screens: {
-            xs: '290px',
-            sm: '375px',
-            md: '678px',
-            lg: '850px',
-            xl: '1000px',
-            xxl: '1200px',
-           
-          
-          },
+       screens: {
+        xs: '290px',
+        sm: '640px',
+        md:'768px',
+        lg: '1024px',
+        xl: '1280px',
+        xxl: '1536px',
+       
+      
+      },
         colors: {
           primary: '#3498db',
           secondary: '#f1c40f',
