@@ -31,6 +31,13 @@
                 <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
             </button>
         </div>
+        <div class=" hidden  font-sora md:block md:gap-2 flex absolute right-3">
+            <a href="" class="text-white">Home</a>
+            <a href="" class="text-white">Help</a>
+            <a href="" class="text-white">Profile</a>
+            <a href="" class="text-white">Bookings</a>
+            <a href="" class="text-white">History</a>
+        </div>
     </nav>
 
     <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
@@ -41,14 +48,15 @@
         
            
         </ul>
-
+           
+        
       
     </div>
    <div class="">
     <img src="image/pexels-chi-thanh-1595611963-31104298.jpg" alt="" pb-46 class="object-cover w-full h-screen xs:h-96 ">
    
-    <div class="absolute w-full top-20 bottom-25 mt-40 sm:top-10 md:top-15 lg:top-20 xl:top-25  ">
-        <form id="searchForm" class="w-full max-w-md mx-auto p-4 md:p-6 rounded-lg shadow-lg bg-transparent md:-mt-10" style="background-color: rgba(255, 255, 255, 0.1); box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); backdrop-filter: blur(10px);">
+    <div class="absolute w-full top-20 bottom-25 mt-40   ">
+        <form id="searchForm" class="w-full mx-auto -mt-16  p-6 rounded-lg shadow-lg bg-transparent md:max-w-xl  mx-auto md:-mt-32 " style="background-color: rgba(255, 255, 255, 0.1); box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); backdrop-filter: blur(10px);">
     <label for="Boat-Dropdown" class="block mb-2 text-sm font-medium text-gray-700 sm:text-base md:text-lg lg:text-xl xl:text-2xl">Choose a boat type:</label>
     <select id="Boat-dropdown" name="island" class="block p-3 w-full bg-gray-100 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
         <option value="">Select boat</option>
@@ -85,9 +93,10 @@
 
     </div>
 
+
+<h2 class="text-black text-center text-2xl font-bold  mt-5 font-clash-display sm:mt-4">Top Deals</h2>
+<p class="text-center font-medium py-3 p-1 font-sora sm:m-9 sm:-mt-3 md:w-[100px] mt-4">Discover amazing discounts and unbeatable prices on boats and all sizes and types with our top rated boast deals!</p>
    <div id="searchResults" class="mt-8 grid grid-cols-1 gap-6  px-3 sm:grid-cols-2 md:grid-cols-3 "></div>
-<h2 class="text-black text-center text-2xl font-bold  mt-5 font-clash-display">Top Deals</h2>
-<p class="text-center font-medium py-3 p-1 font-sora">Discover amazing discounts and unbeatable prices on boats and all sizes and types with our top rated boast deals!</p>
 <div class="bg-black p-2 mt-10">
     <img src="image/boat_owner_icon.svg" alt="" style="filter: invert(20)" class=" pt-7 brightness-2 invert-0 mx-auto">
     <div class="grid grid-cols-1 gap-4 mt-7 p-3">
@@ -142,6 +151,7 @@
 </body>
 
 <footer class="bg-black mt-24 py-10">
+    <div class="md:grid grid-cols-2">
  <div class="text-center ">
     <div class="text-white text-xl font-semibold font-clash-display ">Customer service</div>
     <ol class="font-sora text-white font-lg font-sora mt-3"> <a href="contact.html"> Contact</a></ol>
@@ -161,6 +171,7 @@
     <ol class="font-sora font-lg text-white font-sora mt-3"> <a href=""> Bookings</a></ol>
     <ol class="font-sora font-lg text-white font-sora mt-3"> <a href="">History </a></ol>
     <img src="image/boatmu_logo_4.webp" alt="" width="200" height="200" class="mx-auto flex mt-5">
+ </div>
  </div> 
 </footer>
 </html>

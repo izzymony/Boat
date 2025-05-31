@@ -3,7 +3,7 @@ const menuItems = [
     {text: 'Help', href: '#'},
     {text: 'Profile', href: '#', type: 'Profile'},
     {text: 'Bookings', href: '#', type: 'Bookings'},
-    {text: 'history', href: '#', type: 'history'}
+    {text: 'History', href: '#', type: 'History'}
 ]
 
 const menu = document.getElementById('menu');
