@@ -8,6 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
+
+    <nav class="bg-black py-4 fixed w-full z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
+            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
+                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
+            </button>
+             <div class=" hidden  font-sora md:block md:flex gap-4 grid grid-cols-1 justify-between space-between gap-2 absolute right-3">
+            <a href="index.html" class="text-white">Home</a>
+            <a href="contact.html" class="text-white">Help</a>
+            <a href="profile.html" class="text-white">Profile</a>
+            <a href="Booking.html" class="text-white">Bookings</a>
+            <a href="history.html" class="text-white">History</a>
+        </div>
+        </div>
+    </nav>
+
+    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
+        <button id="close-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
+        
+           
+        </ul>
+
+      
+    </div>
   
     <main class="px-4 mt-44   ">
         <h1 class="font-bold text-2xl py-3 font-clash-display font-bold">Contact Us</h1>
