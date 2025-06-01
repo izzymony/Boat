@@ -1,6 +1,6 @@
 const menuItems = [
-    {text: 'Home', href: '#'},
-    {text: 'Help', href: '#'},
+    {text: 'Home', href: '#', type:'Home'},
+    {text: 'Help', href: '#' , type:'Help'},
     {text: 'Profile', href: '#', type: 'Profile'},
     {text: 'Bookings', href: '#', type: 'Bookings'},
     {text: 'History', href: '#', type: 'History'}
@@ -31,10 +31,22 @@ menuItems.forEach((item) => {
         window.location.href = 'Booking.html'
       })
     }
-    if(item.text === 'history'){
+    if(item.text === 'History'){
       link.addEventListener('click', (e) =>{
         e.preventDefault();
         window.location.href = 'history.html'
+      })
+    }
+    if(item.text === 'Home'){
+      link.addEventListener('click', (e) =>{
+        e.preventDefault();
+        window.location.href = 'index.html'
+      })
+    }
+    if(item.text === 'Help'){
+      link.addEventListener('click', (e) =>{
+        e.preventDefault();
+        window.location.href = 'contact.html'
       })
     }
     menuItem.appendChild(link);
@@ -188,7 +200,37 @@ closeMenu.addEventListener('click', () => {
       price: "$800/day",
       image: "image/pexels-matthew-barra-178916-813011.jpg",
       description: "Comfortable transport for large groups"
-    }
+    },
+      {
+      name: "Island Weaver Ferry",
+      type: "Ferry",
+      island: "North",
+      activity: "Boat cruise",
+      capacity: 120,
+      price: "$750/day",
+      image: "image/pexels-matthew-barra-178916-813011.jpg",
+      description: "Comfortable transport for large groups"
+    },
+      {
+      name: "Island Weaver Ferry",
+      type: "Ferry",
+      island: "North",
+      activity: "Party",
+      capacity: 120,
+      price: "$860/day",
+      image: "image/pexels-matthew-barra-178916-813011.jpg",
+      description: "Comfortable transport for large groups"
+    },
+      {
+      name: "Island Weaver Ferry",
+      type: "Ferry",
+      island: "East",
+      activity: "Party",
+      capacity: 120,
+      price: "$860/day",
+      image: "image/pexels-matthew-barra-178916-813011.jpg",
+      description: "Comfortable transport for large groups"
+    },
     // Add more boats matching your dropdown options
   ];
 

@@ -21,36 +21,36 @@ menuItems.forEach((item) =>{
  const link = document.createElement('a');
  link.href = item.text;
  link.textContent = item.text;
- link.classList.add ('block' ,'py-6' ,'text-black', 'hover:bg-gray-100', 'font-medium');
+ link.classList.add('block' ,'py-6' ,'text-black', 'hover:bg-gray-100', 'font-medium');
 
  if(item.text === 'Home'){
   link.addEventListener('click', (e) =>{
-    preventDefault(e);
+    e.preventDefault();
     window.location = 'index.html'
   })
  }
  if(item.text === 'Help'){
   link.addEventListener('click', (e) =>{
-    preventDefault(e);
+    e.preventDefault();
     window.location = 'Help.html'
   })
  }
  if(item.text === 'Profile'){
   link.addEventListener('click', (e) =>{
-    preventDefault(e);
-    window.location = 'Profile.html'
+    e.preventDefault();
+    window.location = 'profile.html'
   })
  }
  if(item.text === 'Booking'){
   link.addEventListener('click', (e) =>{
-    preventDefault(e);
+    e.preventDefault();
     window.location = 'Booking.html'
   })
  }
 
  if(item.text === 'History'){
   link.addEventListener('click', (e) => {
-    preventDefault(e);
+    e.preventDefault();
     window.location = 'history.html'
   })
  }
@@ -60,11 +60,11 @@ menuItems.forEach((item) =>{
  
 })
 
-toggleMenu.addEventListener('click' , (e) =>{
+toggleMenu.addEventListener('click' , () =>{
   menuContainer.classList.toggle('hidden')
 })
 
-closeMenu.addEventListener('click' ,(e) =>{
+closeMenu.addEventListener('click' ,() =>{
   menuContainer.classList.toggle('hidden')
 } )
 
