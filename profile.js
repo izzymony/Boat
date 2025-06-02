@@ -144,9 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Define menu items
 const menuItems = [
-    { text: 'Home', href: 'index.html' },
-    { text: 'Help', href: 'contact.html' },
-    { text: 'Profile', href: 'profile.html' }, // Updated href to point to signin.html
+   {text: 'Home', href: '#', type:'Home'},
+    {text: 'Help', href: '#' , type:'Help'},
+    {text: 'Profile', href: '#', type: 'Profile'},
+    {text: 'Bookings', href: '#', type: 'Bookings'},
+    {text: 'History', href: '#', type: 'History'}
 ];
 
 // Get the menu element
@@ -176,6 +178,20 @@ menuItems.forEach((item) => {
                 window.location.href = 'index.html'
             })
         }
+        if(item.text === 'Bookings'){
+            link.addEventListener('click' , (e) => {
+                e.preventDefault();
+                window.location.href = 'Booking.html'
+            })
+        }
+        if(item.text === 'History'){
+            link.addEventListener('click' , (e) => {
+                e.preventDefault();
+                window.location.href = 'history.html'
+            })
+        }
+
+        
     }
 
     menuItem.appendChild(link);
