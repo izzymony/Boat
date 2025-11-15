@@ -3,67 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="tailwind.css" />
+    <title>Navigation Bar</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="dist/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 </head>
-<body>
-    <!-- Gallery Section -->
-<section class="py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-4">Gallery</h2>
-      <div class="flex justify-center mb-4">
-        <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" id="filter-button">Filter</button>
-        <div class="flex justify-center" id="filter-options" style="display: none;">
-          <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="interior-filter">Interior</button>
-          <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="exterior-filter">Exterior</button>
-          <button class="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="features-filter">Features</button>
+<body> 
+    <nav class="bg-black py-4 fixed top-0 w-full z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-white">  <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-50"></a>
+            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
+                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
+            </button>
         </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="gallery">
-        <!-- Image 1 -->
-        <div class="relative">
-          <img src="image/boatmu_logo_4.png" alt="Image 1" class="w-full h-full object-cover">
-          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-1">View</button>
-        </div>
-        <!-- Image 2 -->
-        <div class="relative">
-          <img src="image2.jpg" alt="Image 2" class="w-full h-full object-cover">
-          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-2">View</button>
-        </div>
-        <!-- Image 3 -->
-        <div class="relative">
-          <img src="image3.jpg" alt="Image 3" class="w-full h-full object-cover">
-          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-3">View</button>
-        </div>
-        <!-- Image 4 -->
-        <div class="relative">
-          <img src="image4.jpg" alt="Image 4" class="w-full h-full object-cover">
-          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-4">View</button>
-        </div>
-        <!-- Image 5 -->
-        <div class="relative">
-          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-5">
-          <img src="image5.jpg" alt="Image 5" class="w-full h-full object-cover">
-          </button>
-        </div>
-        <!-- Image 6 -->
-        <div class="relative">
-          <img src="image6.jpg" alt="Image 6" class="w-full h-full object-cover">
-          <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="lightbox-button-6">View</button>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Lightbox Modal -->
-  <div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 flex justify-center items-center" id="lightbox-modal" style="display: none;">
-    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-4">
-      <img src="" alt="" id="lightbox-image" class="w-full h-full object-cover">
-      <button class="absolute top-0 right-0 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4" id="close-lightbox-button">Close</button>
-    </div>
-  </div>
+    </nav>
 
+    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4">
+        <button id="close-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center">
+        
+           
+        </ul>
+
+      
+    </div>
+    <section py-20 pt-10>
+      <div class=" mx-auto px-4">
+        <h2 class="font-clash-display text-3xl font-bold mt-24 py-3">Gallery</h2>
+
+        <!-- filters -->
+         <div class="flex gap-4">
+            <div>
+              <label for="price-filter" class="block text-sm font-medium text-gray-700 font-clash-display">Filter by price</label>
+              <select name="" id="price-filter" class="block  p-2 border border-900 rounded-lg">
+                <option value="all">All</option>
+                <option value="low">Below $500</option>
+                <option value="medium">$500-$1000</option>
+                <option value="high">Above $1000</option>
+
+              </select>
+            </div>
+            <div>
+              <label for="availability-filter" class="block text-sm font-medium text-gray-700 font-clash-display">Filter by availability</label>
+              <select name="" id="availability-filter" class="block  p-2 border  border-black-800 rounded-lg">
+                <option value="all">All</option>
+                <option value="available">Available</option>
+                <option value="unavailable">Unavailable</option>
+
+              </select>
+            </div>
+         </div>
+
+         <div id="boat-container" class="grid mt-6 gap-6 grid-cols-1 md:grid-cols-2">
+          <div class="boat-card border border-gray-300 shadow-lg rounded-lg p-4" data-price="800" data-availability="available" >
+            <img src="image/pexels-isaw-company-66472-3274984.jpg" alt="" class="">
+            <h3 class="text-grey-600 font-clash-display text-lg font-bold mt-2 font-clash-display">Speed Boat</h3>
+            <p class="text-gray-600">Experience thrill of speed on water, highly efficient and powerful used in recreational activities, experience the best water sport. </p>
+            <p class="text-blue-500 font-bold py-4">$1200 per day</p>
+            <p class="text-green-500 font-medium"> Available</p>
+          </div>
+
+                <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="400" data-availability="unavailable">
+                  <img src="image/pexels-george-desipris-722995.jpg" alt="Boat 3" class="w-full  object-cover rounded-md mb-4" style="height: 230px;">
+                  <h3 class="text-lg font-bold font-bold font-clash-display">Fishing Boat</h3>
+                  <p class="text-gray-600">Perfect for fishing trips with friends.</p>
+                  <p class="text-blue-500 font-bold">$400 per day</p>
+                  <p class="text-red-500 font-medium">Unavailable</p>
+              </div>
+
+              <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="4800" data-availability="unavailable">
+                <img src="image/pexels-muratak-31437699.jpg" alt="Boat 1" class="w-full  object-cover h-40 rounded-md mb-4" >
+                <h3 class="text-lg font-bold font-clash-display">Luxury Yacht</h3>
+                <p class="text-gray-600">A luxurious yacht for your perfect vacation.</p>
+                <p class="text-blue-500 font-bold">$4800 per day</p>
+                <p class="text-red-500 font-medium">Unavailable</p>
+            </div>
+
+              <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="300" data-availability="available">
+                <img src="image/pexels-lukas-kosc-525097851-27132665.jpg" alt="Boat 1" class="w-full h-40 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-bold font-clash-display">Inflatable Yacht</h3>
+                <p class="text-gray-600">A small inflatable yacht for your perfect vacation.</p>
+                <p class="text-blue-500 font-bold">$300 per day</p>
+                <p class="text-green-500 font-medium">Available</p>
+            </div>
+
+            
+              <div class="boat-card border border-gray-300 rounded-lg shadow-lg p-4" data-price="500" data-availability="available">
+                <img src="image/pexels-lukas-kosc-525097851-27132665.jpg" alt="Boat 1" class="w-full h-40 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-bold font-clash-display">Inflatable Yacht</h3>
+                <p class="text-gray-600">A small inflatable yacht for your perfect vacation.</p>
+                <p class="text-blue-500 font-bold">$500 per day</p>
+                <p class="text-green-500 font-medium">Available</p>
+          </div>
+         </div>
+      </div>
+    </section>
+    
+     <div id="modal" class="hidden overflow-y-auto  fixed inset-0 bg-black bg-opacity-50 flex z-20  ">
+      <div class="bg-white rounded-lg  w-full shadow-lg p-6 w-96 relative overflow-y-auto">
+          <button id="close-modal" class="bg-black h-fit w-full  rounded-lg">
+              <img src="image/icons8-cancel-50 (2).png" alt="">
+          </button>
+          <img src="image/pexels-isaw-company-66472-3274984.jpg" id="modal-image" class="w-full h-48 object-cover rounded-md mb-4" alt="">
+          <h3 id="modal-title" class="text-lg font-bold font-clash-display"></h3>
+          <p id="modal-description" class="text-gray-600 font-sora "></p>
+          <p id="modal-price" class="text-blue-500 font-bold"></p>
+          <p id="modal-availability" class="text-green-500 font-medium"></p>
+
+          <div class="">
+            <h2 class="font-clash-display font-bold text-center text-3xl py-7">More</h2>
+            <div class=" grid grid-cols-2 gap-4 justify-center ">
+              <img src="image/pexels-lukas-kosc-525097851-27132665.jpg" alt="" class="rounded-lg h-250 w-250">
+              <img src="image/pexels-george-desipris-722995.jpg" alt="" class="rounded-lg h-250 w-250">
+              <img src="image/pexels-chi-thanh-1595611963-31104298.jpg" alt="" class="rounded-lg h-150 w-150">
+              <img src="image/pexels-pixabay-163236.jpg" alt="" class="rounded-lg h-250 w-250">
+            </div>
+          </div>
+      </div>
+   </div>
+   
   <script src="gallery.js"></script>
 </body>
 </html>

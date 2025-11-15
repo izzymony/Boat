@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="dist/output.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-black py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-white">
+                <img src="image/boatmu_logo_1.png" alt="" class="w-32 h-12 object-contain">
+            </a>
+            <button id="toggle-menu" class="md:hidden flex justify-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white">
+                <img src="image/menu.png" alt="" width="20" height="20" class="brightness-2 w-full filter invert">
+            </button>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-white hover:text-gray-300">Dashboard</a>
+                <a href="#" class="text-white hover:text-gray-300">Bookings</a>
+                <a href="#" class="text-white hover:text-gray-300">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-10 shadow-md p-4 md:hidden">
+        <button id="close-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul id="menu" class="mt-12 cursor-pointer font-medium text-black text-center"></ul>
+    </div>
+
+    <div class="popup p-3 px-4 top-50 left-50 fixed inset-0 flex items-center justify-center bg-opacity-50 z-50" style="display: none;">
+        <div class="bg-black shadow-md rounded-lg p-4 mt-24 mx-auto">
+            <p class='text-center text-white font-bold font-clash-display text-[20px]'>Profile successfully saved</p>
+        </div>
+    </div>
+
+    <section class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto ">
+            <div>
+            <div class="bg-white py-4 border border-2-blur shadow-md rounded-lg p-4 mt-12 mx-auto">
+                <div class="flex gap-4 items-center justify-between px-2 md:justify-center md:gap-12">
+                    <div class="hover:bg-gray-400 hover:opacity-30 p-2 rounded-full cursor-pointer">
+                        <img src="image/icons8-person-24.png" alt="" id="image-profile" class="clickable-image w-6 h-6">
+                    </div>
+                    <img src="image/icons8-dashboard-24 (1).png" alt="" id="image-dashboard" class="clickable-image w-6 h-6">
+                    <img src="image/icons8-booking-24.png" alt="" id="image-booking" class="clickable-image w-6 h-6">
+                    <img src="image/icons8-dashboard-24 (1).png" alt="" class="w-6 h-6">
+                    <img src="image/icons8-dashboard-24 (1).png" alt="" class="w-6 h-6">
+                </div>
+            </div>
+        </div>
+  
+        <main class="mt-12 md:mt-20">
+            <div class="max-w-7xl mx-auto">
+                <div id="content-profile" class="dynamic-section hidden">
+                    <form id="myForm" class="py-5">
+                        <div class="md:flex md:space-x-8">
+                            <div class="md:w-1/2">
+                                <div class="text-[18px] font-clash-display font-medium">First name</div>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="name-error" class="text-red-500 text-sm"></div>
+                                
+                                <div class="mt-4 text-[18px] font-clash-display font-medium">Last name / surname</div>
+                                <input type="text" name="surname" id="surname" placeholder="Enter your surname" class="border w-full rounded-lg p-3 mt-2 border-black-600">
+                                <div id="surname-error" class="text-red-500 text-sm"></div>
+                                
+                                <div class="mt-4 text-[18px] font-clash-display font-medium">Email</div>
+                                <input type="text" id="email" name="email" placeholder="Email" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="email-error" class="text-red-500 text-sm"></div>
+                                
+                                <div class="mt-4 text-[18px] font-clash-display font-medium">Phone number</div>
+                                <input type="text" id="phone" name="phone" placeholder="Phone number" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="phone-error" class="text-red-500 text-sm"></div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <div class="mt-4 md:mt-0 text-[18px] font-clash-display font-medium">Address</div>
+                                <input type="text" id="address" name="address" placeholder="Address" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="address-error" class="text-red-500 text-sm"></div>
+                                
+                                <div class="mt-4 text-[18px] font-clash-display font-medium">Postal</div>
+                                <input type="text" id="postal" name="postal" placeholder="Postal" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="postal-error" class="text-red-500 text-sm"></div>
+                                
+                                <div class="mt-4 text-[18px] font-clash-display font-medium">City</div>
+                                <input type="text" id="city" name="city" placeholder="City" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="city-error" class="text-red-500 text-sm"></div>
+                                
+                                <div class="mt-4 text-[18px] font-clash-display font-medium">Date of Birth</div>
+                                <input type="date" id="date" name="date" class="border w-full rounded-lg p-3 border-black-600 mt-2">
+                                <div id="date-error" class="text-red-500 text-sm"></div>
+                                
+                            </div>
+                        </div>
+                        <button type="button" class="Bar bg-black p-3 w-full md:w-1/2 mx-auto block mt-8 rounded-lg text-white font-clash-display hover:bg-gray-800 transition duration-300">
+                            <p class="font-clash-display font-medium">Save</p>
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="content-dashboard" class="dynamic-section hidden">
+                    <h1 class="font-clash-display text-black text-center text-2xl md:text-3xl font-medium">My Boat <span class="text-white bg-black p-2 rounded-lg">Listings</span></h1>
+                    <hr class="mt-4 mb-4 border-gray-300">
+                    <div class="mt-6">
+                        <h2 class="text-center font-bold font-clash-display text-xl md:text-2xl">Register a boat</h2>
+                        <p class="text-sm md:text-base text-center font-medium font-sora max-w-2xl mx-auto">Below you can find all the boats that you have Registered. You can add new one, update or deleted listings here.</p>
+                    </div>
+                    <a href="dash.html">
+                        <div class="mt-6 bg-gray-200 h-64 flex items-center justify-center rounded-lg hover:bg-gray-300 transition duration-300">
+                            <div class="flex items-center">
+                                <img src="image/icons8-plus-24.png" alt="" class="object-cover mr-2">
+                                <h3 class="font-sora font-bold text-2xl">Add</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div id="content-booking" class="dynamic-section hidden">
+                    <h1 class="text-2xl md:text-3xl font-clash-display font-medium text-black mb-6">Booking Availability</h1>
+                    <p class="text-gray-600 font-sora mb-4 md:text-lg">Below are the dates that have been booked:</p>
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg shadow-md p-4 md:p-6">
+                        <ul id="booked-dates-list" class="list-disc pl-5 text-gray-700 space-y-2 md:text-lg">
+                            <!-- Booked dates will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <footer class="bg-black mt-24 py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="text-center md:text-left">
+                    <div class="text-white text-xl font-semibold font-clash-display mb-4">Customer</div>
+                    <ol class="font-sora text-white font-lg mt-3 hover:text-gray-300"><a href="contact.html">Contact</a></ol>
+                    <ol class="font-sora text-white font-lg mt-3 hover:text-gray-300"><a href="">FAQ</a></ol>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="text-white text-xl font-semibold font-clash-display mb-4">About</div>
+                    <ol class="font-sora text-white font-lg mt-3 hover:text-gray-300"><a href="">Company</a></ol>
+                    <ol class="font-sora text-white font-lg mt-3 hover:text-gray-300"><a href="">Team</a></ol>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="text-white text-xl font-semibold font-clash-display mb-4">Legal</div>
+                    <ol class="font-sora text-white font-lg mt-3 hover:text-gray-300"><a href="">Privacy Policy</a></ol>
+                    <ol class="font-sora text-white font-lg mt-3 hover:text-gray-300"><a href="">Terms</a></ol>
+                </div>
+            </div>
+            <img src="image/boatmu_logo_4 (1).png" alt="" class="mx-auto w-40 mt-10">
+        </div>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>

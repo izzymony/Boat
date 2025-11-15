@@ -1,8 +1,8 @@
 // Define menu items
 const menuItems = [
     { text: 'Home', href: '#' },
-    { text: 'Help', href: '#' },
-    { text: 'Login', href: '#', type: 'login' },
+    { text: 'Help', href: 'contact.html' },
+    { text: 'Login', href: 'signin.html' }, // Updated href to point to signin.html
 ];
 
 // Get the menu element
@@ -13,31 +13,30 @@ const closeMenu = document.getElementById('close-menu');
 
 // Generate menu items
 menuItems.forEach((item) => {
-    if (item.type === 'login') {
-        const loginItem = document.createElement('li');
-        const link = document.createElement('a');
-        link.textContent = item.text;
-       
-        link.addEventListener('click', () => {
-            redirectToLoginPage();
-        });
-        loginItem.appendChild(link);
-        menu.appendChild(loginItem);
-    } else {
-        const menuItem = document.createElement('li');
-        const link = document.createElement('a');
-        link.href = item.href;
-        link.textContent = item.text;
-        link.classList.add('block', 'py-6', 'px-4', 'text-black', 'hover:bg-gray-100', 'font-medium');
-        menuItem.appendChild(link);
-        menu.appendChild(menuItem);
-    }
-});
+    const menuItem = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = item.href; // Use the href from the menuItems array
+    link.textContent = item.text;
+    link.classList.add('block', 'py-6', 'px-4', 'text-black', 'hover:bg-gray-100', 'font-medium');
 
-// Function to redirect to login page
-function redirectToLoginPage() {
-    window.location.href = 'signIn.html'; // Replace with your login page URL
-}
+    // Add event listener for "Login" link
+    if (item.text === 'Login') {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            window.location.href = 'signin.html'; // Redirect to signin.html
+        });
+
+        if(item.text === 'Help'){
+            link.addEventListener('click' , (e) => {
+                e.preventDefault();
+                window.location.href = 'contact.html'
+            })
+        }
+    }
+
+    menuItem.appendChild(link);
+    menu.appendChild(menuItem);
+});
 
 // Toggle menu on mobile devices
 toggleMenu.addEventListener('click', () => {
