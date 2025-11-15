@@ -56,12 +56,19 @@ menuItems.forEach((item) => {
 
 toggleMenu.addEventListener('click', () => {
     menuContainer.classList.toggle('hidden');
-
 })
 
 closeMenu.addEventListener('click', () => {
     menuContainer.classList.toggle('hidden')
 })
+
+// Close menu when clicking overlay
+const menuOverlay = document.getElementById('menu-overlay');
+if (menuOverlay) {
+    menuOverlay.addEventListener('click', () => {
+        menuContainer.classList.toggle('hidden')
+    });
+}
 
 
 
@@ -281,51 +288,75 @@ closeMenu.addEventListener('click', () => {
   // Function to display results
   function displayResults(boats) {
     const container = document.getElementById('searchResults');
-    
+
     if (boats.length === 0) {
       container.innerHTML = `
-        <div class="col-span-full text-center py-12">
-          <p class="text-gray-500 text-lg">No boats found matching your criteria</p>
+        <div class="col-span-full text-center py-16">
+          <svg class="w-20 h-20 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <p class="text-gray-500 text-xl font-medium mb-2">No boats found</p>
+          <p class="text-gray-400">Try adjusting your search filters</p>
         </div>
       `;
       return;
     }
-    
+
     container.innerHTML = boats.map(boat => `
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        <img src="${boat.image}" alt="${boat.name}" 
-             class="w-full h-48 object-cover"
-             onerror="this.src='https://via.placeholder.com/400x300?text=Boat+Image'">
-        <div class="p-6">
-          <div class="flex justify-between items-start">
-            <h3 class="text-xl font-bold text-gray-900">${boat.name}</h3>
-            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">${boat.price}</span>
+      <div class="boat-card group">
+        <div class="relative overflow-hidden">
+          <img src="${boat.image}" alt="${boat.name}"
+               class="boat-card-image group-hover:scale-110 transition-transform duration-500"
+               onerror="this.src='https://via.placeholder.com/400x300?text=Boat+Image'">
+          <div class="absolute top-4 right-4">
+            <span class="badge bg-ocean-500 text-white font-semibold text-base px-4 py-2 shadow-lg">
+              ${boat.price}
+            </span>
           </div>
-          
-          <p class="mt-2 text-gray-600">${boat.description}</p>
-          
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+        </div>
+
+        <div class="boat-card-content">
+          <h3 class="boat-card-title group-hover:text-ocean-500 transition-colors">
+            ${boat.name}
+          </h3>
+
+          <p class="boat-card-description">${boat.description}</p>
+
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge badge-info">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
               ${boat.type}
             </span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+            <span class="badge badge-success">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
               ${boat.island}
             </span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+            <span class="badge badge-warning">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
               ${boat.activity}
             </span>
           </div>
-          
-          <div class="mt-6 flex justify-between items-center">
-            <span class="text-sm font-medium text-gray-500">Capacity: ${boat.capacity} people</span>
-            <button onclick="bookBoat('${encodeURIComponent(JSON.stringify(boat))}')" ' class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">
+
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <div class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 mr-2 text-ocean-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+              <span class="text-sm font-medium">${boat.capacity} guests</span>
+            </div>
+            <button onclick="bookBoat('${encodeURIComponent(JSON.stringify(boat))}')"
+                    class="btn btn-primary btn-sm">
               Book Now
             </button>
           </div>
         </div>
       </div>
     `).join('');
-
-   
-
   }

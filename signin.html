@@ -1,75 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
+    <title>Sign In - Boat.mu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="tailwind.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="dist/output.css" />
     <script src="signIn.js" type="module"></script>
-  </head>
-  <body
-    style="background-image: url('image/pexels-pixabay-163236.jpg')"
-    class="h-screen bg-cover bg-center w-full"
-  >
-    <main class="px-4">
-      <div class="flex flex-col items-center justify-center h-screen">
-        <form>
-          <div
-            class="w-full p-6 py-10 rounded-lg shadow-lg bg-transparent"
-            style="
-              background-color: rgba(255, 255, 255, 0.1);
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-              backdrop-filter: blur(10px);
-            "
-          >
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              class="p-3 w-full border-gray-500 border rounded-lg font-sora"
-            />
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              class="p-3 mt-3 border-gray-500 border w-full rounded-lg placeholder:text-black font-medium font-sora"
-            />
-            <button
-              type="submit"
-              class="bg-black text-white font-bold font-sora py-2 px-4 rounded-lg mt-3 w-full font-clash-display text-lg"
-            >
-              <p class="font-clash-display">Sign In</p>
-            </button>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-ocean-500 via-ocean-600 to-ocean-700 flex items-center justify-center p-4">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </div>
 
-            <button
-              class="btn mt-9 w-full bg-black rounded-lg text-white p-3 font-sora"
-              id="google-auth-btn"
-            >
-              <div class="flex text-center align-center justify-center gap-2">
-                <img src="image/icons8-google-50.png" alt="" class="h-6 w-6" />
-                <p class="font-clash-display">Sign-in with Google</p>
-              </div>
-            </button>
-            <p class="mt-5 text-white ">Don't have an account? <a href="signup.html" class="text-black underline">Register here</a> </p>
-          </div>
-          
-        </form>
-      </div>
+    <main class="w-full max-w-md relative z-10 animate-fade-in-up">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-block">
+                <img src="image/boatmu_logo_1.png" alt="Boat.mu" class="h-12 mx-auto mb-4 brightness-0 invert">
+            </a>
+            <h1 class="text-3xl font-bold font-clash text-white mb-2">Welcome Back</h1>
+            <p class="text-ocean-100">Sign in to continue your adventure</p>
+        </div>
+
+        <!-- Sign In Form -->
+        <div class="glass backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/20">
+            <form id="signInForm" class="space-y-6">
+                <!-- Email Input -->
+                <div>
+                    <label for="email" class="label text-white mb-2">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+                            </svg>
+                        </div>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                            class="input pl-12 bg-white/95 text-gray-900 border-white/30"
+                        />
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div>
+                    <label for="password" class="label text-white mb-2">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="••••••••"
+                            required
+                            class="input pl-12 bg-white/95 text-gray-900 border-white/30"
+                        />
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center text-white cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 rounded border-white/30 text-ocean-500 focus:ring-ocean-500 focus:ring-offset-0 mr-2">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="text-ocean-100 hover:text-white transition-colors duration-200">Forgot password?</a>
+                </div>
+
+                <!-- Sign In Button -->
+                <button type="submit" class="w-full btn btn-lg bg-white text-ocean-600 hover:bg-gray-100 font-semibold shadow-lg">
+                    Sign In
+                </button>
+
+                <!-- Divider -->
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-white/20"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-4 bg-transparent text-white">Or continue with</span>
+                    </div>
+                </div>
+
+                <!-- Google Sign In -->
+                <button
+                    type="button"
+                    id="google-auth-btn"
+                    class="w-full btn btn-lg bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+                >
+                    <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Sign in with Google
+                </button>
+            </form>
+
+            <!-- Sign Up Link -->
+            <p class="mt-8 text-center text-white">
+                Don't have an account?
+                <a href="signup.html" class="font-semibold text-ocean-100 hover:text-white transition-colors duration-200 underline">Create Account</a>
+            </p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="mt-6 text-center">
+            <a href="index.html" class="text-white hover:text-ocean-100 transition-colors duration-200 inline-flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
     </main>
-  </body>
+</body>
 </html>

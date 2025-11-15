@@ -3,198 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boat.mu - Boat Rentals</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Boat.mu - Premium Boat Rentals</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="tailwind.css" />
     <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;700&display=swap" rel="stylesheet" />
-    <script src="tailwind.config.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/output.css" />
 </head>
-<body class="font-sora">
+<body class="font-sora bg-white">
     <!-- Navigation -->
-    <nav class="bg-black py-4 fixed w-full z-50">
-        <div class="container mx-auto px-4 xl:px-0 flex justify-between items-center max-w-7xl">
-            <a href="#" class="text-lg font-bold text-white">
-                <img src="image/boatmu_logo_1.png" alt="Boat.mu Logo" class="w-32 h-auto">
+    <nav class="bg-gray-900 backdrop-blur-md bg-opacity-95 py-4 fixed w-full z-50 border-b border-gray-800 transition-all duration-300">
+        <div class="container-custom flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <img src="image/boatmu_logo_1.png" alt="Boat.mu Logo" class="w-32 h-auto transition-transform duration-200 group-hover:scale-105">
             </a>
-            
+
             <!-- Mobile menu button -->
-            <button id="toggle-menu" class="md:hidden flex justify-center items-center w-8 h-8 bg-gray-900 hover:bg-gray-700 text-white rounded transition duration-200">
-                <img src="image/menu.png" alt="Menu" width="20" height="20" class="brightness-2 w-full filter invert">
+            <button type="button" id="toggle-menu" aria-label="Open navigation menu" class="md:hidden flex justify-center items-center w-10 h-10 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all duration-200 hover:scale-105">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
             </button>
-            
+
             <!-- Desktop navigation -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-white hover:text-gray-300 transition duration-200">Home</a>
-                <a href="contact.html" class="text-white hover:text-gray-300 transition duration-200">Help</a>
-                <a href="profile.html" class="text-white hover:text-gray-300 transition duration-200">Profile</a>
-                <a href="Booking.html" class="text-white hover:text-gray-300 transition duration-200">Bookings</a>
-                <a href="history.html" class="text-white hover:text-gray-300 transition duration-200">History</a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="px-4 py-2 text-white font-medium rounded-lg bg-ocean-500 transition-all duration-200">Home</a>
+                <a href="gallery.html" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">Gallery</a>
+                <a href="contact.html" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">Help</a>
+                <a href="profile.html" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">Profile</a>
+                <a href="Booking.html" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">Bookings</a>
+                <a href="history.html" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">History</a>
             </div>
         </div>
     </nav>
 
     <!-- Mobile menu -->
-    <div id="menu-container" class="hidden fixed top-0 right-0 h-screen w-64 bg-white z-50 shadow-xl p-4 transform transition-transform duration-300 ease-in-out">
-        <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-        <ul id="menu" class="mt-16 space-y-4">
-            <li><a href="index.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded transition duration-200">Home</a></li>
-            <li><a href="contact.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded transition duration-200">Help</a></li>
-            <li><a href="profile.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded transition duration-200">Profile</a></li>
-            <li><a href="Booking.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded transition duration-200">Bookings</a></li>
-            <li><a href="history.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded transition duration-200">History</a></li>
-        </ul>
+    <div id="menu-container" class="hidden fixed inset-0 z-50 md:hidden">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm" id="menu-overlay"></div>
+
+        <!-- Menu panel -->
+        <div class="absolute top-0 right-0 h-full w-80 max-w-full bg-white shadow-2xl transform transition-transform duration-300 ease-out animate-slide-in-right">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <img src="image/boatmu_logo_1.png" alt="Boat.mu Logo" class="w-28 h-auto">
+                    <button type="button" id="close-menu" aria-label="Close navigation menu" class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <ul id="menu" class="space-y-2">
+                    <li><a href="index.html" class="flex items-center py-3 px-4 text-ocean-500 font-semibold bg-ocean-50 rounded-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        Home
+                    </a></li>
+                    <li><a href="gallery.html" class="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Gallery
+                    </a></li>
+                    <li><a href="contact.html" class="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Help
+                    </a></li>
+                    <li><a href="profile.html" class="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        Profile
+                    </a></li>
+                    <li><a href="Booking.html" class="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Bookings
+                    </a></li>
+                    <li><a href="history.html" class="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        History
+                    </a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- Hero Section -->
-    <div class="relative pt-16">
-        <img src="image/pexels-chi-thanh-1595611963-31104298.jpg" alt="Boat on water" class="object-cover w-full h-screen max-h-[800px]">
-        
-        <!-- Search Form -->
-        <div class="absolute inset-0 flex items-center justify-center mt-16 md:mt-24 lg:mt-32">
-            <form id="searchForm" class="w-11/12 md:w-4/5 lg:w-2/3 xl:w-1/2 mx-auto p-6 md:p-8 lg:p-10 rounded-lg shadow-xl" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
-                <label for="Boat-Dropdown" class="block mb-2 text-sm font-medium text-white sm:text-base md:text-lg lg:text-xl">Choose a boat type:</label>
-                <select id="Boat-dropdown" name="island" class="block p-3 w-full bg-white/90 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-4 sm:mb-6">
-                    <option value="">Select boat</option>
-                    <option value="yacht">Yacht</option>
-                    <option value="Skii-boat">Skii-boat</option>
-                    <option value="Ferry">Ferry</option>
-                    <option value="fishing-boat">Fishing boat</option>
-                    <option value="Military">Military ship</option>
-                </select>
-                
-                <label for="islandDropdown" class="block mb-2 text-sm font-medium text-white sm:text-base md:text-lg lg:text-xl">Choose an island:</label>
-                <select id="islandDropdown" name="island" class="block w-full p-3 bg-white/90 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-4 sm:mb-6">
-                    <option value="">Select island</option>
-                    <option value="Snake Island">Island 1</option>
-                    <option value="North">North</option>
-                    <option value="South">South</option>
-                    <option value="East">East</option>
-                    <option value="West">West</option>
-                </select>
-                
-                <label for="activitiesDropdown" class="block mb-2 text-sm font-medium text-white sm:text-base md:text-lg lg:text-xl">Activities:</label>
-                <select id="activitiesDropdown" name="island" class="block p-3 w-full bg-white/90 border border-gray-300 text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-6 sm:mb-8">
-                    <option value="">Select activities</option>
-                    <option value="Boat cruise">Boat cruise</option>
-                    <option value="Party">Party</option>
-                    <option value="Fun and games">Fun and games</option>
-                    <option value="Outing">Outdoors</option>
-                    <option value="Military">Military missile testing</option>
-                </select>
-                
-                <div class="flex justify-center">
-                    <button id="searchButton" class="bg-black hover:bg-gray-800 px-6 py-3 text-white rounded-lg flex items-center justify-center transition duration-200 w-full sm:w-auto sm:px-8">
-                        Search
-                    </button>
+    <div class="relative pt-16 min-h-screen flex items-center">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="image/pexels-chi-thanh-1595611963-31104298.jpg" alt="Luxury boats on crystal clear water" class="object-cover w-full h-full">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="container-custom relative z-10 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Hero Text -->
+                <div class="text-white animate-fade-in-up">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-clash mb-6 leading-tight">
+                        Discover Your Perfect
+                        <span class="block text-ocean-300">Boat Adventure</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl">
+                        Experience the freedom of the open water with our premium fleet of boats. From luxury yachts to fishing vessels, we've got your perfect match.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="gallery.html" class="btn btn-primary btn-lg">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            Browse Boats
+                        </a>
+                        <a href="#how-it-works" class="btn btn-outline border-white text-white hover:bg-white hover:text-gray-900 btn-lg">
+                            Learn More
+                        </a>
+                    </div>
                 </div>
-            </form>
+
+                <!-- Right: Search Form -->
+                <div class="animate-fade-in-up animation-delay-200">
+                    <form id="searchForm" class="glass backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/20">
+                        <h3 class="text-2xl font-bold font-clash text-white mb-6">Find Your Boat</h3>
+
+                        <div class="space-y-5">
+                            <div>
+                                <label for="Boat-dropdown" class="label text-white text-sm font-semibold mb-2">Boat Type</label>
+                                <select id="Boat-dropdown" name="boatType" class="select bg-white/95 text-gray-900 border-white/30">
+                                    <option value="">Select boat type</option>
+                                    <option value="yacht">Yacht</option>
+                                    <option value="Skii-boat">Ski Boat</option>
+                                    <option value="Ferry">Ferry</option>
+                                    <option value="fishing-boat">Fishing Boat</option>
+                                    <option value="speedboat">Speed Boat</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="islandDropdown" class="label text-white text-sm font-semibold mb-2">Destination</label>
+                                <select id="islandDropdown" name="island" class="select bg-white/95 text-gray-900 border-white/30">
+                                    <option value="">Select destination</option>
+                                    <option value="North">North Coast</option>
+                                    <option value="South">South Coast</option>
+                                    <option value="East">East Coast</option>
+                                    <option value="West">West Coast</option>
+                                    <option value="Island">Island Tours</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="activitiesDropdown" class="label text-white text-sm font-semibold mb-2">Activity</label>
+                                <select id="activitiesDropdown" name="activity" class="select bg-white/95 text-gray-900 border-white/30">
+                                    <option value="">Select activity</option>
+                                    <option value="Boat cruise">Boat Cruise</option>
+                                    <option value="Party">Party</option>
+                                    <option value="Fun and games">Water Sports</option>
+                                    <option value="Fishing">Fishing</option>
+                                    <option value="Outing">Island Hopping</option>
+                                </select>
+                            </div>
+
+                            <button type="button" id="searchButton" class="w-full btn btn-primary btn-lg mt-2">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                Search Boats
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Top Deals Section -->
-    <section class="container mx-auto px-4 py-12 md:py-16 lg:py-20 max-w-7xl">
-        <h2 class="text-black text-center text-3xl md:text-4xl font-bold font-clash-display">Top Deals</h2>
-        <p class="text-center font-medium py-3 max-w-2xl mx-auto text-gray-600 md:text-lg">Discover amazing discounts and unbeatable prices on boats of all sizes and types with our top rated boat deals!</p>
-        
-        <div id="searchResults" class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <!-- Boat cards will be inserted here -->
+    <section class="section bg-gray-50">
+        <div class="container-custom">
+            <div class="text-center mb-12">
+                <h2 class="section-title">
+                    Top <span class="text-gradient">Deals</span>
+                </h2>
+                <p class="section-subtitle">
+                    Discover amazing discounts and unbeatable prices on boats of all sizes and types with our premium fleet!
+                </p>
+            </div>
+
+            <div id="searchResults" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <!-- Boat cards will be inserted here dynamically -->
+            </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <div class="bg-black py-12 md:py-16 lg:py-20">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-                <div class="text-center md:text-left">
-                    <img src="image/boat_owner_icon.svg" alt="Boat owner" class="w-20 h-20 mx-auto md:mx-0 brightness-2 invert-0">
-                    <p class="font-sora text-white mt-6 md:text-lg">Ready to turn your boat into a profitable business? Boat.mu makes it effortless with our free and easy-to-fill form to list your boat for charter worldwide. Any type of boat is welcome!</p>
-                    <p class="font-sora text-white mt-4 md:text-lg">Set your own prices and choose who you want to charter your boat to, all while having complete control over your boat's availability. At Boat.mu, we're dedicated to making your business more profitable. Start your journey today!</p>
-                    <div class="mt-6">
-                        <button class="bg-white hover:bg-gray-200 px-6 py-3 rounded-lg font-sora text-black font-semibold transition duration-200">
-                            Advertise a boat
-                        </button>
+    <section id="how-it-works" class="bg-gradient-to-br from-gray-900 via-gray-800 to-black section">
+        <div class="container-custom">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Boat Owners CTA -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-ocean-500 p-4 rounded-xl mr-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold font-clash text-white">For Boat Owners</h3>
                     </div>
+
+                    <p class="text-gray-300 text-lg mb-4">
+                        Ready to turn your boat into a profitable business? Boat.mu makes it effortless with our free and easy-to-fill form to list your boat for charter worldwide.
+                    </p>
+                    <p class="text-gray-300 text-lg mb-8">
+                        Set your own prices and choose who you want to charter your boat to, all while having complete control over your boat's availability.
+                    </p>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start text-gray-200">
+                            <svg class="w-6 h-6 text-ocean-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Free listing for all boat types</span>
+                        </li>
+                        <li class="flex items-start text-gray-200">
+                            <svg class="w-6 h-6 text-ocean-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Full control over pricing and availability</span>
+                        </li>
+                        <li class="flex items-start text-gray-200">
+                            <svg class="w-6 h-6 text-ocean-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Worldwide exposure to potential renters</span>
+                        </li>
+                    </ul>
+
+                    <a href="dash.html" class="btn btn-primary w-full justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        List Your Boat
+                    </a>
                 </div>
-                
-                <div class="text-center md:text-left">
-                    <img src="image/boat_renter_icon.svg" alt="Boat renter" class="w-20 h-20 mx-auto md:mx-0 brightness-2 invert-0">
-                    <p class="font-sora text-white mt-6 md:text-lg">Looking for the perfect boat for your dream trip? Our search engine makes it easy to find any type of boat in your desired area.</p>
-                    <p class="font-sora text-white mt-4 md:text-lg">Trust us to be your go-to third-party boat booking platform, and book directly and securely online with just a few clicks. At Boat.mu, we're dedicated to making sure you have the best trip possible. Start your search today!</p>
-                    <div class="mt-6">
-                        <a href="gallery.html" class="inline-block bg-white hover:bg-gray-200 px-6 py-3 rounded-lg font-sora text-black font-semibold transition duration-200">
-                            Search for a boat
-                        </a>
+
+                <!-- Boat Renters CTA -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-sand-500 p-4 rounded-xl mr-4">
+                            <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold font-clash text-white">For Adventurers</h3>
                     </div>
+
+                    <p class="text-gray-300 text-lg mb-4">
+                        Looking for the perfect boat for your dream trip? Our search engine makes it easy to find any type of boat in your desired area.
+                    </p>
+                    <p class="text-gray-300 text-lg mb-8">
+                        Trust us to be your go-to boat booking platform, and book directly and securely online with just a few clicks.
+                    </p>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start text-gray-200">
+                            <svg class="w-6 h-6 text-sand-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Wide selection of boats and destinations</span>
+                        </li>
+                        <li class="flex items-start text-gray-200">
+                            <svg class="w-6 h-6 text-sand-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Secure online booking in minutes</span>
+                        </li>
+                        <li class="flex items-start text-gray-200">
+                            <svg class="w-6 h-6 text-sand-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Competitive prices and great deals</span>
+                        </li>
+                    </ul>
+
+                    <a href="gallery.html" class="btn bg-sand-500 text-gray-900 hover:bg-sand-600 w-full justify-center shadow-md hover:shadow-lg transition-all duration-200">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        Browse Boats
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Top Categories Section -->
-    <section class="container mx-auto px-4 py-12 md:py-16 lg:py-20 max-w-7xl">
-        <h2 class="text-black text-center text-3xl md:text-4xl font-bold font-clash-display">Top Categories</h2>
-        <p class="text-center font-medium py-3 max-w-2xl mx-auto text-gray-600 md:text-lg">We offer a diverse range of categories and activities to browse from, ensuring you can easily find the perfect vessel for your needs.</p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            <div class="relative group overflow-hidden rounded-xl">
-                <img src="image/pexels-photo-9965352.jpeg" alt="Luxury Yacht" class="w-full h-64 sm:h-80 lg:h-96 object-cover transition duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                    <h3 class="text-white text-xl md:text-2xl font-bold">Luxury Yachts</h3>
-                </div>
+    <section class="section bg-white">
+        <div class="container-custom">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Popular <span class="text-gradient">Categories</span></h2>
+                <p class="section-subtitle">
+                    Explore our diverse range of boats and find the perfect vessel for your next adventure
+                </p>
             </div>
-            
-            <div class="relative group overflow-hidden rounded-xl">
-                <img src="image/pexels-photo-11828360.jpeg" alt="Fishing Boats" class="w-full h-64 sm:h-80 lg:h-96 object-cover transition duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                    <h3 class="text-white text-xl md:text-2xl font-bold">Fishing Boats</h3>
-                </div>
-            </div>
-            
-            <div class="relative group overflow-hidden rounded-xl sm:col-span-2 lg:col-span-1">
-                <img src="image/pexels-photo-2150304.jpeg" alt="Speed Boats" class="w-full h-64 sm:h-80 lg:h-96 object-cover transition duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                    <h3 class="text-white text-xl md:text-2xl font-bold">Speed Boats</h3>
-                </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Category Card 1 -->
+                <a href="gallery.html?category=yacht" class="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-300">
+                    <img src="image/pexels-photo-9965352.jpeg" alt="Luxury Yachts" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-2xl md:text-3xl font-bold font-clash mb-2 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                            Luxury Yachts
+                        </h3>
+                        <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Experience elegance on the water →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Category Card 2 -->
+                <a href="gallery.html?category=fishing" class="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-300">
+                    <img src="image/pexels-photo-11828360.jpeg" alt="Fishing Boats" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-2xl md:text-3xl font-bold font-clash mb-2 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                            Fishing Boats
+                        </h3>
+                        <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Catch your next big fish →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Category Card 3 -->
+                <a href="gallery.html?category=speedboat" class="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                    <img src="image/pexels-photo-2150304.jpeg" alt="Speed Boats" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-2xl md:text-3xl font-bold font-clash mb-2 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                            Speed Boats
+                        </h3>
+                        <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Feel the thrill of speed →
+                        </p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-12 md:py-16">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-                <div class="text-center md:text-left">
-                    <h3 class="text-white text-xl font-semibold font-clash-display mb-4">Customer service</h3>
-                    <ul class="space-y-2">
-                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition duration-200">Contact</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-200">FAQ</a></li>
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container-custom py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <!-- Brand Column -->
+                <div class="lg:col-span-1">
+                    <img src="image/boatmu_logo_1.png" alt="Boat.mu Logo" class="w-40 mb-4">
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Your trusted platform for boat rentals and charters. Connecting boat owners with adventurers worldwide.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200" aria-label="Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-white text-lg font-semibold font-clash mb-4">Customer Service</h3>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            Contact Us
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            FAQ
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            Support
+                        </a></li>
                     </ul>
                 </div>
-                
-                <div class="text-center md:text-left">
-                    <h3 class="text-white text-xl font-semibold font-clash-display mb-4">Information</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-200">How things work</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-200">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-200">Terms and Conditions</a></li>
+
+                <!-- Information -->
+                <div>
+                    <h3 class="text-white text-lg font-semibold font-clash mb-4">Information</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            How It Works
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            Privacy Policy
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            Terms & Conditions
+                        </a></li>
                     </ul>
                 </div>
-                
-                <div class="text-center md:text-left">
-                    <h3 class="text-white text-xl font-semibold font-clash-display mb-4">My account</h3>
-                    <ul class="space-y-2">
-                        <li><a href="profile.html" class="text-gray-300 hover:text-white transition duration-200">Profile</a></li>
-                        <li><a href="Booking.html" class="text-gray-300 hover:text-white transition duration-200">Bookings</a></li>
-                        <li><a href="history.html" class="text-gray-300 hover:text-white transition duration-200">History</a></li>
+
+                <!-- My Account -->
+                <div>
+                    <h3 class="text-white text-lg font-semibold font-clash mb-4">My Account</h3>
+                    <ul class="space-y-3">
+                        <li><a href="profile.html" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            Profile
+                        </a></li>
+                        <li><a href="Booking.html" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            My Bookings
+                        </a></li>
+                        <li><a href="history.html" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            History
+                        </a></li>
                     </ul>
-                    <img src="image/boatmu_logo_4.webp" alt="Boat.mu Logo" class="w-40 mx-auto md:mx-0 mt-6">
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2024 Boat.mu. All rights reserved.
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200">Sitemap</a>
+                        <a href="#" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200">Cookies</a>
+                        <a href="signin.html" class="text-gray-400 hover:text-ocean-400 transition-colors duration-200">Sign In</a>
+                    </div>
                 </div>
             </div>
         </div>
